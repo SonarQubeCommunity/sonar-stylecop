@@ -1,0 +1,3 @@
+<StyleCopViolations>
+  <Violation Section="Root" LineNumber="foo" Source="MyLibrary\Program.cs" RuleNamespace="StyleCop.CSharp.DocumentationRules" Rule="FileMustHaveHeader" RuleId="SA1633">The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</Violation>
+</StyleCopViolations>
