@@ -42,9 +42,9 @@ public class StyleCopMsBuildWriterTest {
     File file = tmp.newFile();
 
     new StyleCopMsBuildWriter().write(styleCopDllFile, projectFile, reportFile, file);
-    String contents1 = Files.toString(file, Charsets.UTF_8);
+    String contents = Files.toString(file, Charsets.UTF_8);
 
-    assertThat(contents1.replace("\r", "").replace("\n", ""))
+    assertThat(contents.replace("\r", "").replace("\n", ""))
       .isEqualTo(
         "<Project xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\" DefaultTargets=\"StyleCopLaunch\">"
           + "  <UsingTask AssemblyFile=\"" + styleCopDllFile.getAbsolutePath() + "\" TaskName=\"StyleCopTask\"/>"
