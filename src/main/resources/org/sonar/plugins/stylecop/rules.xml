@@ -1,0 +1,9 @@
+<rules>
+
+  <rule key="StyleCopFoo">
+    <priority>MAJOR</priority>
+    <name><![CDATA[StyleCopFoo]]></name>
+    <description>StyleCopFoo</description>
+  </rule>
+
+</rules>

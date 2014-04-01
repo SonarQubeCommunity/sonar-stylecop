@@ -19,17 +19,20 @@
  */
 package org.sonar.plugins.stylecop;
 
-import org.junit.Test;
+import org.sonar.api.utils.command.Command;
+import org.sonar.api.utils.command.CommandExecutor;
 
-import static org.fest.assertions.Assertions.assertThat;
+import java.util.concurrent.TimeUnit;
 
-public class StyleCopPluginTest {
+public class StyleCopExecutor {
 
-  @Test
-  public void test() {
-    assertThat(new StyleCopPlugin().getExtensions()).containsOnly(
-      StyleCopRuleRepository.class,
-      StyleCopSensor.class);
+  private static final int INSPECTCODE_TIMEOUT_MINUTES = 120;
+
+  public void execute(String executable, String msBuildFile) {
+    CommandExecutor.create().execute(
+      Command.create(executable)
+        .addArgument(msBuildFile),
+      TimeUnit.MINUTES.toMillis(INSPECTCODE_TIMEOUT_MINUTES));
   }
 
 }

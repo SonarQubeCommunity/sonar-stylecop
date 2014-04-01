@@ -19,17 +19,27 @@
  */
 package org.sonar.plugins.stylecop;
 
-import org.junit.Test;
+import org.sonar.api.rules.Rule;
+import org.sonar.api.rules.RuleRepository;
+import org.sonar.api.rules.XMLRuleParser;
 
-import static org.fest.assertions.Assertions.assertThat;
+import java.util.List;
 
-public class StyleCopPluginTest {
+public class StyleCopRuleRepository extends RuleRepository {
 
-  @Test
-  public void test() {
-    assertThat(new StyleCopPlugin().getExtensions()).containsOnly(
-      StyleCopRuleRepository.class,
-      StyleCopSensor.class);
+  private static final String REPOSITORY_NAME = "StyleCop";
+
+  private final XMLRuleParser xmlRuleParser;
+
+  public StyleCopRuleRepository(XMLRuleParser xmlRuleParser) {
+    super(StyleCopPlugin.REPOSITORY_KEY, StyleCopPlugin.LANGUAGE_KEY);
+    setName(REPOSITORY_NAME);
+    this.xmlRuleParser = xmlRuleParser;
+  }
+
+  @Override
+  public List<Rule> createRules() {
+    return xmlRuleParser.parse(getClass().getResourceAsStream("/org/sonar/plugins/stylecop/rules.xml"));
   }
 
 }

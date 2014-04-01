@@ -20,16 +20,28 @@
 package org.sonar.plugins.stylecop;
 
 import org.junit.Test;
+import org.sonar.api.rules.Rule;
+import org.sonar.api.rules.XMLRuleParser;
+
+import java.util.List;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-public class StyleCopPluginTest {
+public class StyleCopRuleRepositoryTest {
 
   @Test
   public void test() {
-    assertThat(new StyleCopPlugin().getExtensions()).containsOnly(
-      StyleCopRuleRepository.class,
-      StyleCopSensor.class);
+    StyleCopRuleRepository repo = new StyleCopRuleRepository(new XMLRuleParser());
+    assertThat(repo.getLanguage()).isEqualTo("cs");
+    assertThat(repo.getKey()).isEqualTo("stylecop");
+
+    List<Rule> rules = repo.createRules();
+    assertThat(rules.size()).isEqualTo(1);
+    for (Rule rule : rules) {
+      assertThat(rule.getKey()).isNotNull();
+      assertThat(rule.getName()).isNotNull();
+      assertThat(rule.getDescription()).isNotNull();
+    }
   }
 
 }

@@ -19,16 +19,21 @@
  */
 package org.sonar.plugins.stylecop;
 
+import com.google.common.collect.ImmutableList;
 import org.sonar.api.SonarPlugin;
 
-import java.util.Collections;
 import java.util.List;
 
 public class StyleCopPlugin extends SonarPlugin {
 
+  public static final String LANGUAGE_KEY = "cs";
+  public static final String REPOSITORY_KEY = "stylecop";
+
   @Override
   public List getExtensions() {
-    return Collections.emptyList();
+    return ImmutableList.of(
+      StyleCopRuleRepository.class,
+      StyleCopSensor.class);
   }
 
 }
