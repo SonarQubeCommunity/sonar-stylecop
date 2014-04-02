@@ -91,11 +91,11 @@ public class StyleCopSensor implements Sensor {
     File msBuildFile = new File(fileSystem.workingDir(), "StyleCop-msbuild.proj");
     File reportFile = new File(fileSystem.workingDir(), "stylecop-report.xml");
     msBuildWriter.write(
-      new File("C:/Program Files/StyleCop 4.7/StyleCop.dll"),
-      new File("C:/Users/SonarSource/Documents/Visual Studio 2013/Projects/CSharpPlayground/MyLibrary/MyLibrary.csproj"),
+      new File(settings.getString(StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY)),
+      new File(settings.getString("sonar.stylecop.projectFilePath")),
       settingsFile, reportFile, msBuildFile); // FIXME
 
-    executor.execute(settings.getString("sonar.stylecop.dll.path"), msBuildFile.getAbsolutePath());
+    executor.execute(settings.getString(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY), msBuildFile.getAbsolutePath());
 
     Set<String> enabledRuleKeys = enabledRuleKeys();
     for (StyleCopIssue issue : parser.parse(reportFile)) {

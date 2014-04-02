@@ -21,6 +21,8 @@ package org.sonar.plugins.stylecop;
 
 import com.google.common.collect.ImmutableList;
 import org.sonar.api.SonarPlugin;
+import org.sonar.api.config.PropertyDefinition;
+import org.sonar.api.resources.Qualifiers;
 
 import java.util.List;
 
@@ -29,11 +31,41 @@ public class StyleCopPlugin extends SonarPlugin {
   public static final String LANGUAGE_KEY = "cs";
   public static final String REPOSITORY_KEY = "stylecop";
 
+  public static final String STYLECOP_MSBUILD_PATH_PROPERTY_KEY = "sonar.stylecop.msBuildPath";
+  public static final String STYLECOP_DLL_PATH_PROPERTY_KEY = "sonar.stylecop.styleCopDllPath";
+  public static final String STYLECOP_PROJECT_FILE_PATH_PROPERTY_KEY = "sonar.stylecop.projectFilePath";
+  private static final String CATEGORY = "C#";
+  private static final String SUBCATEGORY = "StyleCop";
+
   @Override
   public List getExtensions() {
     return ImmutableList.of(
       StyleCopRuleRepository.class,
-      StyleCopSensor.class);
+      StyleCopSensor.class,
+
+      PropertyDefinition.builder(STYLECOP_MSBUILD_PATH_PROPERTY_KEY)
+        .name("Path to MsBuild.exe")
+        .description("Example: C:/Program Files/MSBuild/12.0/Bin/MsBuild.exe")
+        .defaultValue("C:/Program Files/MSBuild/12.0/Bin/MsBuild.exe")
+        .category(CATEGORY)
+        .subCategory(SUBCATEGORY)
+        .onQualifiers(Qualifiers.PROJECT, Qualifiers.MODULE)
+        .build(),
+      PropertyDefinition.builder(STYLECOP_DLL_PATH_PROPERTY_KEY)
+        .name("Path to StyleCop.dll")
+        .description("Example: C:/Program Files/StyleCop 4.7/StyleCop.dll")
+        .defaultValue("C:/Program Files/StyleCop 4.7/StyleCop.dll")
+        .category(CATEGORY)
+        .subCategory(SUBCATEGORY)
+        .onQualifiers(Qualifiers.PROJECT, Qualifiers.MODULE)
+        .build(),
+      PropertyDefinition.builder(STYLECOP_PROJECT_FILE_PATH_PROPERTY_KEY)
+        .name("Project file")
+        .description("Example: C:/Users/MyUser/Documents/Visual Studio 2013/Projects/MyProject/Project1/Project1.csproj")
+        .category(CATEGORY)
+        .subCategory(SUBCATEGORY)
+        .onlyOnQualifiers(Qualifiers.PROJECT, Qualifiers.MODULE)
+        .build());
   }
 
 }
