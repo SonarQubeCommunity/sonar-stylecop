@@ -20,6 +20,8 @@
 package org.sonar.plugins.stylecop;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.Sensor;
@@ -30,10 +32,13 @@ import org.sonar.api.issue.Issuable;
 import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.resources.Project;
 import org.sonar.api.rule.RuleKey;
+import org.sonar.api.rules.ActiveRule;
 import org.sonar.api.scan.filesystem.FileQuery;
 import org.sonar.api.scan.filesystem.ModuleFileSystem;
 
 import java.io.File;
+import java.util.List;
+import java.util.Set;
 
 public class StyleCopSensor implements Sensor {
 
@@ -73,20 +78,26 @@ public class StyleCopSensor implements Sensor {
 
   @Override
   public void analyse(Project project, SensorContext context) {
-    analyse(context, new FileProvider(project, context), new StyleCopMsBuildWriter(), new StyleCopReportParser(), new StyleCopExecutor());
+    analyse(context, new FileProvider(project, context), new StyleCopSettingsWriter(), new StyleCopMsBuildWriter(), new StyleCopReportParser(), new StyleCopExecutor());
   }
 
   @VisibleForTesting
-  void analyse(SensorContext context, FileProvider fileProvider, StyleCopMsBuildWriter msBuildWriter, StyleCopReportParser parser, StyleCopExecutor executor) {
+  void analyse(SensorContext context, FileProvider fileProvider, StyleCopSettingsWriter settingsWriter, StyleCopMsBuildWriter msBuildWriter, StyleCopReportParser parser,
+    StyleCopExecutor executor) {
+
+    File settingsFile = new File(fileSystem.workingDir(), "StyleCop-settings.StyleCop");
+    settingsWriter.write(enabledRuleConfigKeys(), settingsFile);
+
     File msBuildFile = new File(fileSystem.workingDir(), "StyleCop-msbuild.proj");
     File reportFile = new File(fileSystem.workingDir(), "stylecop-report.xml");
     msBuildWriter.write(
       new File("C:/Program Files/StyleCop 4.7/StyleCop.dll"),
       new File("C:/Users/SonarSource/Documents/Visual Studio 2013/Projects/CSharpPlayground/MyLibrary/MyLibrary.csproj"),
-      reportFile, msBuildFile); // FIXME
+      settingsFile, reportFile, msBuildFile); // FIXME
 
     executor.execute(settings.getString("sonar.stylecop.dll.path"), msBuildFile.getAbsolutePath());
 
+    Set<String> enabledRuleKeys = enabledRuleKeys();
     for (StyleCopIssue issue : parser.parse(reportFile)) {
       File file = new File(issue.source());
       org.sonar.api.resources.File sonarFile = fileProvider.fromIOFile(file);
@@ -96,10 +107,12 @@ public class StyleCopSensor implements Sensor {
         Issuable issuable = perspectives.as(Issuable.class, sonarFile);
         if (issuable == null) {
           logSkippedIssueOutsideOfSonarQube(issue, file);
+        } else if (!enabledRuleKeys.contains(issue.rule())) {
+          logSkippedIssue(issue, "because the rule \"" + issue.rule() + "\" is either missing or inactive in the quality profile.");
         } else {
           issuable.addIssue(
             issuable.newIssueBuilder()
-              .ruleKey(RuleKey.of(StyleCopPlugin.REPOSITORY_KEY, "StyleCopFoo")) // FIXME
+              .ruleKey(RuleKey.of(StyleCopPlugin.REPOSITORY_KEY, issue.rule()))
               .line(issue.lineNumber())
               .message(issue.message())
               .build());
@@ -114,6 +127,22 @@ public class StyleCopSensor implements Sensor {
 
   private static void logSkippedIssue(StyleCopIssue issue, String reason) {
     LOG.info("Skipping the StyleCop issue at line " + issue.reportLine() + " " + reason);
+  }
+
+  private List<String> enabledRuleConfigKeys() {
+    ImmutableList.Builder<String> builder = ImmutableList.builder();
+    for (ActiveRule activeRule : profile.getActiveRulesByRepository(StyleCopPlugin.REPOSITORY_KEY)) {
+      builder.add(activeRule.getConfigKey());
+    }
+    return builder.build();
+  }
+
+  private Set<String> enabledRuleKeys() {
+    ImmutableSet.Builder<String> builder = ImmutableSet.builder();
+    for (ActiveRule activeRule : profile.getActiveRulesByRepository(StyleCopPlugin.REPOSITORY_KEY)) {
+      builder.add(activeRule.getRuleKey());
+    }
+    return builder.build();
   }
 
 }

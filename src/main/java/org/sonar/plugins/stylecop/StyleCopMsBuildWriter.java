@@ -29,7 +29,7 @@ import java.io.IOException;
 
 public class StyleCopMsBuildWriter {
 
-  public void write(File styleCopDllFile, File projectFile, File reportFile, File file) {
+  public void write(File styleCopDllFile, File projectFile, File settingsFile, File reportFile, File file) {
     StringBuilder sb = new StringBuilder();
 
     appendLine(sb, "<Project xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\" DefaultTargets=\"StyleCopLaunch\">");
@@ -39,7 +39,7 @@ public class StyleCopMsBuildWriter {
     appendLine(sb, "  <PropertyGroup>");
     appendLine(sb, "    <FolderToAnalyse>" + projectFile.getParentFile().getAbsolutePath() + "</FolderToAnalyse>");
     appendLine(sb, "    <ProjectPath>" + projectFile.getAbsolutePath() + "</ProjectPath>");
-    appendLine(sb, "    <StyleCopOverrideSettingsFile></StyleCopOverrideSettingsFile>");
+    appendLine(sb, "    <StyleCopOverrideSettingsFile>" + settingsFile.getAbsolutePath() + "</StyleCopOverrideSettingsFile>");
     appendLine(sb, "    <StyleCopOutputFile>" + reportFile.getAbsolutePath() + "</StyleCopOutputFile>");
     appendLine(sb, "  </PropertyGroup>");
     appendLine(sb, "");

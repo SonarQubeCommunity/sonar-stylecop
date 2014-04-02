@@ -38,10 +38,11 @@ public class StyleCopMsBuildWriterTest {
   public void test() throws Exception {
     File styleCopDllFile = tmp.newFile();
     File projectFile = tmp.newFile();
+    File settingsFile = tmp.newFile();
     File reportFile = tmp.newFile();
     File file = tmp.newFile();
 
-    new StyleCopMsBuildWriter().write(styleCopDllFile, projectFile, reportFile, file);
+    new StyleCopMsBuildWriter().write(styleCopDllFile, projectFile, settingsFile, reportFile, file);
     String contents = Files.toString(file, Charsets.UTF_8);
 
     assertThat(contents.replace("\r", "").replace("\n", ""))
@@ -52,7 +53,7 @@ public class StyleCopMsBuildWriterTest {
           + "  <PropertyGroup>"
           + "    <FolderToAnalyse>" + projectFile.getParentFile().getAbsolutePath() + "</FolderToAnalyse>"
           + "    <ProjectPath>" + projectFile.getAbsolutePath() + "</ProjectPath>"
-          + "    <StyleCopOverrideSettingsFile></StyleCopOverrideSettingsFile>"
+          + "    <StyleCopOverrideSettingsFile>" + settingsFile.getAbsolutePath() + "</StyleCopOverrideSettingsFile>"
           + "    <StyleCopOutputFile>" + reportFile.getAbsolutePath() + "</StyleCopOutputFile>"
           + "  </PropertyGroup>"
           + ""
