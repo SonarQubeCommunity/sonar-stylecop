@@ -93,7 +93,7 @@ public class StyleCopSensor implements Sensor {
     msBuildWriter.write(
       new File(settings.getString(StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY)),
       new File(settings.getString("sonar.stylecop.projectFilePath")),
-      settingsFile, reportFile, msBuildFile); // FIXME
+      settingsFile, reportFile, msBuildFile);
 
     executor.execute(settings.getString(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY), msBuildFile.getAbsolutePath());
 
