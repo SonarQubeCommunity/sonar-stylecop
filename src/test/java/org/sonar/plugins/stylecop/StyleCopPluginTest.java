@@ -40,7 +40,8 @@ public class StyleCopPluginTest {
     assertThat(propertyKeys(extensions)).containsOnly(
       "sonar.stylecop.msBuildPath",
       "sonar.stylecop.styleCopDllPath",
-      "sonar.stylecop.projectFilePath");
+      "sonar.stylecop.projectFilePath",
+      "sonar.stylecop.timeoutMinutes");
   }
 
   private List nonProperties(List extensions) {

@@ -95,7 +95,10 @@ public class StyleCopSensor implements Sensor {
       new File(settings.getString("sonar.stylecop.projectFilePath")),
       settingsFile, reportFile, msBuildFile);
 
-    executor.execute(settings.getString(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY), msBuildFile.getAbsolutePath());
+    executor.execute(
+      settings.getString(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY),
+      msBuildFile.getAbsolutePath(),
+      settings.getInt(StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY));
 
     Set<String> enabledRuleKeys = enabledRuleKeys();
     for (StyleCopIssue issue : parser.parse(reportFile)) {

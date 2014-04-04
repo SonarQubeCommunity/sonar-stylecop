@@ -34,6 +34,8 @@ public class StyleCopPlugin extends SonarPlugin {
   public static final String STYLECOP_MSBUILD_PATH_PROPERTY_KEY = "sonar.stylecop.msBuildPath";
   public static final String STYLECOP_DLL_PATH_PROPERTY_KEY = "sonar.stylecop.styleCopDllPath";
   public static final String STYLECOP_PROJECT_FILE_PATH_PROPERTY_KEY = "sonar.stylecop.projectFilePath";
+  public static final String STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY = "sonar.stylecop.timeoutMinutes";
+
   private static final String CATEGORY = "C#";
   private static final String SUBCATEGORY = "StyleCop";
 
@@ -65,6 +67,14 @@ public class StyleCopPlugin extends SonarPlugin {
         .category(CATEGORY)
         .subCategory(SUBCATEGORY)
         .onlyOnQualifiers(Qualifiers.PROJECT, Qualifiers.MODULE)
+        .build(),
+      PropertyDefinition.builder(STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY)
+        .name("Timeout in minutes")
+        .description("Example: 60 for a one hour timeout")
+        .defaultValue("60")
+        .category(CATEGORY)
+        .subCategory(SUBCATEGORY)
+        .onQualifiers(Qualifiers.PROJECT, Qualifiers.MODULE)
         .build());
   }
 

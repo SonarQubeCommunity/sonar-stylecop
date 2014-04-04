@@ -76,7 +76,7 @@ public class StyleCopSensorTest {
 
   @Test
   public void analyze() throws Exception {
-    Settings settings = mockSettings("MSBuild.exe", "StyleCop.exe", "MyProject.csproj");
+    Settings settings = mockSettings("MSBuild.exe", "StyleCop.exe", "MyProject.csproj", 60);
     RulesProfile profile = mock(RulesProfile.class);
     ModuleFileSystem fileSystem = mock(ModuleFileSystem.class);
     ResourcePerspectives perspectives = mock(ResourcePerspectives.class);
@@ -132,7 +132,7 @@ public class StyleCopSensorTest {
     verify(settingsWriter).write(
       ImmutableList.of("MyNamespace#AccessModifierMustBeDeclared", "MyNamespace#AccessibleFieldsMustBeginWithUpperCaseLetter"),
       new File(workingDir, "StyleCop-settings.StyleCop"));
-    verify(executor).execute("MSBuild.exe", new File(workingDir, "StyleCop-msbuild.proj").getAbsolutePath());
+    verify(executor).execute("MSBuild.exe", new File(workingDir, "StyleCop-msbuild.proj").getAbsolutePath(), 60);
 
     verify(issuable).addIssue(issue1);
     verify(issuable).addIssue(issue2);
@@ -171,11 +171,12 @@ public class StyleCopSensorTest {
     return builder.build();
   }
 
-  private static Settings mockSettings(String msBuildPath, String styleCopDllPath, String projectFilePath) {
+  private static Settings mockSettings(String msBuildPath, String styleCopDllPath, String projectFilePath, int timeoutMinutes) {
     Settings settings = new Settings();
     settings.setProperty(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY, msBuildPath);
     settings.setProperty(StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY, styleCopDllPath);
     settings.setProperty(StyleCopPlugin.STYLECOP_PROJECT_FILE_PATH_PROPERTY_KEY, projectFilePath);
+    settings.setProperty(StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY, timeoutMinutes);
     return settings;
   }
 

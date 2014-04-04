@@ -26,13 +26,11 @@ import java.util.concurrent.TimeUnit;
 
 public class StyleCopExecutor {
 
-  private static final int INSPECTCODE_TIMEOUT_MINUTES = 120;
-
-  public void execute(String executable, String msBuildFile) {
+  public void execute(String executable, String msBuildFile, int timeoutMinutes) {
     CommandExecutor.create().execute(
       Command.create(executable)
         .addArgument(msBuildFile),
-      TimeUnit.MINUTES.toMillis(INSPECTCODE_TIMEOUT_MINUTES));
+      TimeUnit.MINUTES.toMillis(timeoutMinutes));
   }
 
 }
