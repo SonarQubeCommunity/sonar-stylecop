@@ -89,7 +89,7 @@ public class StyleCopSensor implements Sensor {
     settingsWriter.write(enabledRuleConfigKeys(), settingsFile);
 
     File msBuildFile = new File(fileSystem.workingDir(), "StyleCop-msbuild.proj");
-    File reportFile = new File(fileSystem.workingDir(), "stylecop-report.xml");
+    File reportFile = new File(fileSystem.workingDir(), "StyleCop-report.xml");
     msBuildWriter.write(
       new File(settings.getString(StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY)),
       new File(settings.getString("sonar.stylecop.projectFilePath")),
