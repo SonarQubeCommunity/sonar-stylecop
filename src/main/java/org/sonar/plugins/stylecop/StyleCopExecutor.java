@@ -19,18 +19,32 @@
  */
 package org.sonar.plugins.stylecop;
 
+import org.sonar.api.utils.SonarException;
 import org.sonar.api.utils.command.Command;
+import org.sonar.api.utils.command.CommandException;
 import org.sonar.api.utils.command.CommandExecutor;
 
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class StyleCopExecutor {
 
-  public void execute(String executable, String msBuildFile, int timeoutMinutes) {
-    CommandExecutor.create().execute(
-      Command.create(executable)
-        .addArgument(msBuildFile),
-      TimeUnit.MINUTES.toMillis(timeoutMinutes));
+  public void execute(String executable, String msBuildFile, int timeoutMinutes, String timeoutExceptionMessage) {
+    try {
+      CommandExecutor.create().execute(
+        Command.create(executable)
+          .addArgument(msBuildFile),
+        TimeUnit.MINUTES.toMillis(timeoutMinutes));
+    } catch (CommandException e) {
+      if (isTimeout(e)) {
+        throw new SonarException(timeoutExceptionMessage, e);
+      }
+      throw e;
+    }
+  }
+
+  private static boolean isTimeout(CommandException e) {
+    return e.getCause() instanceof TimeoutException;
   }
 
 }

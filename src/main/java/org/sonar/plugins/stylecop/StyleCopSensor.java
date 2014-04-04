@@ -98,7 +98,8 @@ public class StyleCopSensor implements Sensor {
     executor.execute(
       settings.getString(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY),
       msBuildFile.getAbsolutePath(),
-      settings.getInt(StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY));
+      settings.getInt(StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY),
+      "StyleCop's execution timed out. Increase the timeout by setting \"" + StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY + "\" property.");
 
     Set<String> enabledRuleKeys = enabledRuleKeys();
     for (StyleCopIssue issue : parser.parse(reportFile)) {

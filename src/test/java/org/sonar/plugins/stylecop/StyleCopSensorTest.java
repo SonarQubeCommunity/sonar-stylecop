@@ -132,7 +132,9 @@ public class StyleCopSensorTest {
     verify(settingsWriter).write(
       ImmutableList.of("MyNamespace#AccessModifierMustBeDeclared", "MyNamespace#AccessibleFieldsMustBeginWithUpperCaseLetter"),
       new File(workingDir, "StyleCop-settings.StyleCop"));
-    verify(executor).execute("MSBuild.exe", new File(workingDir, "StyleCop-msbuild.proj").getAbsolutePath(), 60);
+    verify(executor).execute(
+      "MSBuild.exe", new File(workingDir, "StyleCop-msbuild.proj").getAbsolutePath(), 60,
+      "StyleCop's execution timed out. Increase the timeout by setting \"sonar.stylecop.timeoutMinutes\" property.");
 
     verify(issuable).addIssue(issue1);
     verify(issuable).addIssue(issue2);
