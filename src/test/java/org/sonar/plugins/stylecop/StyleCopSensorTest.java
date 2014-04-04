@@ -1,5 +1,5 @@
 /*
- * SonarQube ReSharper Plugin
+ * SonarQube StyleCop Plugin
  * Copyright (C) 2014 SonarSource
  * dev@sonar.codehaus.org
  *
