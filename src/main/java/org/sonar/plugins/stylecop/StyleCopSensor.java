@@ -153,7 +153,7 @@ public class StyleCopSensor implements Sensor {
     if (settings.hasKey(StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY)) {
       LOG.warn("Use the new property \"" + StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY + "\" instead of the deprecated \""
         + StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY + "\".");
-      return settings.getString(StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY);
+      return settings.getString(StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY) + "StyleCop.dll";
     }
     return settings.getString(StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY);
   }
