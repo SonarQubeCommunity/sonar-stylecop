@@ -96,7 +96,7 @@ public class StyleCopSensor implements Sensor {
       settingsFile, reportFile, msBuildFile);
 
     executor.execute(
-      settings.getString(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY),
+      msBuildPath(),
       msBuildFile.getAbsolutePath(),
       settings.getInt(StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY),
       "StyleCop's execution timed out. Increase the timeout by setting \"" + StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY + "\" property.");
@@ -147,6 +147,23 @@ public class StyleCopSensor implements Sensor {
       builder.add(activeRule.getRuleKey());
     }
     return builder.build();
+  }
+
+  private String msBuildPath() {
+    if (settings.hasKey(StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY)) {
+      String netFrameworkPropertyKey = StyleCopPlugin.STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 +
+        settings.getString(StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY) +
+        StyleCopPlugin.STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2;
+
+      if (settings.hasKey(netFrameworkPropertyKey)) {
+        LOG.warn("Use the new property \"" + StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY + "\" instead of the deprecated \""
+          + StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY + "\" and \""
+          + netFrameworkPropertyKey + "\".");
+        return settings.getString(netFrameworkPropertyKey) + "MSBuild.exe";
+      }
+    }
+
+    return settings.getString(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY);
   }
 
   private String styleCopDllPath() {
