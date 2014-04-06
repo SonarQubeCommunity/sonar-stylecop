@@ -91,7 +91,7 @@ public class StyleCopSensor implements Sensor {
     File msBuildFile = new File(fileSystem.workingDir(), "StyleCop-msbuild.proj");
     File reportFile = new File(fileSystem.workingDir(), "StyleCop-report.xml");
     msBuildWriter.write(
-      new File(settings.getString(StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY)),
+      new File(styleCopDllPath()),
       new File(settings.getString("sonar.stylecop.projectFilePath")),
       settingsFile, reportFile, msBuildFile);
 
@@ -147,6 +147,15 @@ public class StyleCopSensor implements Sensor {
       builder.add(activeRule.getRuleKey());
     }
     return builder.build();
+  }
+
+  private String styleCopDllPath() {
+    if (settings.hasKey(StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY)) {
+      LOG.warn("Use the new property \"" + StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY + "\" instead of the deprecated \""
+        + StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY + "\".");
+      return settings.getString(StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY);
+    }
+    return settings.getString(StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY);
   }
 
 }

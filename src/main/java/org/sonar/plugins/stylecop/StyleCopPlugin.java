@@ -35,6 +35,7 @@ public class StyleCopPlugin extends SonarPlugin {
   public static final String STYLECOP_DLL_PATH_PROPERTY_KEY = "sonar.stylecop.styleCopDllPath";
   public static final String STYLECOP_PROJECT_FILE_PATH_PROPERTY_KEY = "sonar.stylecop.projectFilePath";
   public static final String STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY = "sonar.stylecop.timeoutMinutes";
+  public static final String STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY = "sonar.stylecop.installDirectory";
 
   private static final String CATEGORY = "C#";
   private static final String SUBCATEGORY = "StyleCop";
