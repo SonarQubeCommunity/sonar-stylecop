@@ -19,6 +19,7 @@
  */
 package org.sonar.plugins.stylecop;
 
+import com.google.common.base.Preconditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.config.Settings;
@@ -34,37 +35,64 @@ public class StyleCopConfiguration {
   }
 
   public String msBuildPath() {
+    String result;
+
     if (settings.hasKey(StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY)) {
       String netFrameworkPropertyKey = StyleCopPlugin.STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 +
         settings.getString(StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY) +
         StyleCopPlugin.STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2;
 
-      if (settings.hasKey(netFrameworkPropertyKey)) {
-        LOG.warn("Use the new property \"" + StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY + "\" instead of the deprecated \""
-          + StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY + "\" and \""
-          + netFrameworkPropertyKey + "\".");
-        return settings.getString(netFrameworkPropertyKey) + "MSBuild.exe";
-      }
+      LOG.warn("Use the new property \"" + StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY + "\" instead of the deprecated \""
+        + StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY + "\" and \""
+        + netFrameworkPropertyKey + "\".");
+
+      result = mergePathAndFile(mandatoryStringProperty(netFrameworkPropertyKey), "MSBuild.exe");
+    } else {
+      result = mandatoryStringProperty(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY);
     }
 
-    return settings.getString(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY);
+    return result;
   }
 
   public String styleCopDllPath() {
+    String result;
+
     if (settings.hasKey(StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY)) {
       LOG.warn("Use the new property \"" + StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY + "\" instead of the deprecated \""
         + StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY + "\".");
-      return settings.getString(StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY) + "StyleCop.dll";
+
+      result = mergePathAndFile(settings.getString(StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY), "StyleCop.dll");
+    } else {
+      result = mandatoryStringProperty(StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY);
     }
-    return settings.getString(StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY);
+
+    return result;
   }
 
   public String projectFilePath() {
-    return settings.getString("sonar.stylecop.projectFilePath");
+    return mandatoryStringProperty("sonar.stylecop.projectFilePath");
   }
 
   public int timeoutMinutes() {
-    return settings.getInt(StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY);
+    return mandatoryIntProperty(StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY);
+  }
+
+  private String mandatoryStringProperty(String propertyKey) {
+    checkMandatoryProperty(propertyKey);
+    return settings.getString(propertyKey);
+  }
+
+  private int mandatoryIntProperty(String propertyKey) {
+    checkMandatoryProperty(propertyKey);
+    return settings.getInt(propertyKey);
+  }
+
+  private void checkMandatoryProperty(String propertyKey) {
+    Preconditions.checkArgument(settings.hasKey(propertyKey), "Missing the mandatory property \"" + propertyKey + "\".");
+  }
+
+  private static String mergePathAndFile(String s1, String s2) {
+    return s1.endsWith("/") || s1.endsWith("\\") ? s1 + s2 : s1 + "/" + s2;
   }
 
 }
