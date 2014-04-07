@@ -9,13 +9,36 @@
         <rule-repo>stylecop</rule-repo>
         <rule-key>TabsMustNotBeUsed</rule-key>
         <prop>
-          <key>remediationFactor</key>
-          <val>0.01</val>
-          <txt>d</txt>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
         </prop>
         <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>SyntaxException</rule-key>
+        <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
     </chc>
@@ -28,98 +51,416 @@
       <name>Readability</name>
       <chc>
         <rule-repo>stylecop</rule-repo>
-        <rule-key>DoNotPlaceRegionsWithinElements</rule-key>
-        <prop>
-          <key>remediationFactor</key>
-          <val>0.01</val>
-        </prop>
+        <rule-key>PartialElementsMustDeclareAccess</rule-key>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>PrefixCallsCorrectly</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>StaticReadonlyFieldsMustBeginWithUpperCaseLetter</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>UseShorthandForNullableTypes</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>InstanceReadonlyElementsMustAppearBeforeInstanceNonReadonlyElements</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>StatementMustNotBeOnASingleLine</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>StaticReadonlyElementsMustAppearBeforeStaticNonReadonlyElements</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>StaticReadonlyFieldsMustBeginWithUpperCaseLetter</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>DocumentationTextMustEndWithAPeriod</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>AllAccessorsMustBeSingleLineOrMultiLine</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>AttributeConstructorMustNotUseUnnecessaryParenthesis</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>CodeMustNotContainBlankLinesAtEndOfFile</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>CodeMustNotContainBlankLinesAtStartOfFile</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>ElementDocumentationMustBeSpelledCorrectly</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>ElementMustNotBeOnASingleLine</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>DocumentationTextMustBeginWithACapitalLetter</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
         <rule-repo>stylecop</rule-repo>
         <rule-key>DocumentationHeadersMustNotContainBlankLines</rule-key>
         <prop>
-          <key>remediationFactor</key>
-          <val>0.01</val>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
         </prop>
         <prop>
-          <key>remediationFunction</key>
-          <txt>linear</txt>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
         <rule-repo>stylecop</rule-repo>
         <rule-key>DocumentationLinesMustBeginWithSingleSpace</rule-key>
         <prop>
-          <key>remediationFactor</key>
-          <val>0.01</val>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
         </prop>
         <prop>
-          <key>remediationFunction</key>
-          <txt>linear</txt>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
         <rule-repo>stylecop</rule-repo>
         <rule-key>ElementDocumentationHeaderMustBePrecededByBlankLine</rule-key>
         <prop>
-          <key>remediationFactor</key>
-          <val>0.01</val>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
         </prop>
         <prop>
-          <key>remediationFunction</key>
-          <txt>linear</txt>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
         <rule-repo>stylecop</rule-repo>
         <rule-key>ElementDocumentationHeadersMustNotBeFollowedByBlankLine</rule-key>
         <prop>
-          <key>remediationFactor</key>
-          <val>0.01</val>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
         </prop>
         <prop>
-          <key>remediationFunction</key>
-          <txt>linear</txt>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
         <rule-repo>stylecop</rule-repo>
         <rule-key>FileMayOnlyContainASingleClass</rule-key>
         <prop>
-          <key>remediationFactor</key>
-          <val>0.03</val>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
         </prop>
         <prop>
-          <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>2.0</val>
+          <txt>h</txt>
         </prop>
       </chc>
       <chc>
         <rule-repo>stylecop</rule-repo>
         <rule-key>OpeningAttributeBracketsMustBeSpacedCorrectly</rule-key>
         <prop>
-          <key>remediationFactor</key>
-          <val>0.01</val>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
         </prop>
         <prop>
-          <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
         <rule-repo>stylecop</rule-repo>
         <rule-key>OpeningCurlyBracketsMustBeSpacedCorrectly</rule-key>
         <prop>
-          <key>remediationFactor</key>
-          <val>0.01</val>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
         </prop>
         <prop>
-          <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -127,11 +468,16 @@
         <rule-key>OpeningCurlyBracketsMustNotBeFollowedByBlankLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -139,11 +485,16 @@
         <rule-key>OpeningCurlyBracketsMustNotBePrecededByBlankLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -151,11 +502,16 @@
         <rule-key>OpeningGenericBracketsMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -163,11 +519,16 @@
         <rule-key>OpeningParenthesisMustBeOnDeclarationLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -175,11 +536,16 @@
         <rule-key>OpeningParenthesisMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -187,11 +553,16 @@
         <rule-key>OpeningSquareBracketsMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -199,11 +570,16 @@
         <rule-key>ParameterListMustFollowDeclaration</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -211,11 +587,16 @@
         <rule-key>OperatorKeywordMustBeFollowedBySpace</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -223,11 +604,16 @@
         <rule-key>ParameterMustFollowComma</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -235,11 +621,16 @@
         <rule-key>ParameterMustNotSpanMultipleLines</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -247,11 +638,16 @@
         <rule-key>ParametersMustBeOnSameLineOrSeparateLines</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -259,11 +655,16 @@
         <rule-key>SingleLineCommentMustBePrecededByBlankLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -271,11 +672,16 @@
         <rule-key>SingleLineCommentsMustBeginWithSingleSpace</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -283,11 +689,16 @@
         <rule-key>SingleLineCommentsMustNotBeFollowedByBlankLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -295,11 +706,16 @@
         <rule-key>SingleLineCommentsMustNotUseDocumentationStyleSlashes</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -307,12 +723,17 @@
         <rule-key>CodeMustNotContainMultipleBlankLinesInARow</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -320,12 +741,17 @@
         <rule-key>CodeMustNotContainMultipleStatementsOnOneLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -333,12 +759,17 @@
         <rule-key>CodeMustNotContainMultipleWhitespaceInARow</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -346,12 +777,17 @@
         <rule-key>CommasMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -359,12 +795,17 @@
         <rule-key>FieldNamesMustNotContainUnderscore</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -372,12 +813,17 @@
         <rule-key>RemoveUnnecessaryCode</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -385,12 +831,17 @@
         <rule-key>ClosingAttributeBracketsMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -398,12 +849,17 @@
         <rule-key>ClosingCurlyBracketsMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -411,12 +867,17 @@
         <rule-key>ElementMustBeginWithUpperCaseLetter</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -424,12 +885,17 @@
         <rule-key>ElementMustBeginWithLowerCaseLetter</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -437,12 +903,17 @@
         <rule-key>NegativeSignsMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -450,12 +921,17 @@
         <rule-key>PositiveSignsMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -463,12 +939,17 @@
         <rule-key>SymbolsMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -476,12 +957,17 @@
         <rule-key>WhileDoFooterMustNotBePrecededByBlankLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -489,12 +975,17 @@
         <rule-key>ProtectedMustComeBeforeInternal</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -502,12 +993,17 @@
         <rule-key>IncrementDecrementSymbolsMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -515,12 +1011,17 @@
         <rule-key>ElementsMustBeSeparatedByBlankLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -528,12 +1029,17 @@
         <rule-key>ConstFieldNamesMustBeginWithUpperCaseLetter</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>20.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -541,12 +1047,17 @@
         <rule-key>AccessibleFieldsMustBeginWithUpperCaseLetter</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -554,12 +1065,17 @@
         <rule-key>AllAccessorsMustBeMultiLineOrSingleLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -567,12 +1083,17 @@
         <rule-key>ClosingParenthesisMustBeOnLineOfOpeningParenthesis</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -580,12 +1101,17 @@
         <rule-key>ClosingParenthesisMustBeOnLineOfLastParameter</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -593,25 +1119,35 @@
         <rule-key>ClosingGenericBracketsMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
         </prop>
       </chc>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
+        </prop>
       <chc>
         <rule-repo>stylecop</rule-repo>
         <rule-key>ClosingParenthesisMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -619,12 +1155,17 @@
         <rule-key>ClosingSquareBracketsMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -632,12 +1173,17 @@
         <rule-key>ColonsMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -645,12 +1191,17 @@
         <rule-key>DereferenceAndAccessOfMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -658,12 +1209,17 @@
         <rule-key>KeywordsMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -671,12 +1227,17 @@
         <rule-key>MemberAccessSymbolsMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -684,12 +1245,17 @@
         <rule-key>SemicolonsMustBeSpacedCorrectly</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -697,12 +1263,17 @@
         <rule-key>CommaMustBeOnSameLineAsPreviousParameter</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -710,12 +1281,17 @@
         <rule-key>ElementMustNotBeOnSingleLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -723,12 +1299,17 @@
         <rule-key>FieldNamesMustNotBeginWithUnderscore</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -736,12 +1317,17 @@
         <rule-key>UsingDirectivesMustBeOrderedAlphabeticallyByNamespace</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -749,12 +1335,17 @@
         <rule-key>UsingAliasDirectivesMustBeOrderedAlphabeticallyByAliasName</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -762,12 +1353,17 @@
         <rule-key>FieldNamesMustNotUseHungarianNotation</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -775,12 +1371,17 @@
         <rule-key>ClosingCurlyBracketsMustNotBePrecededByBlankLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -788,12 +1389,17 @@
         <rule-key>ChainedStatementBlocksMustNotBePrecededByBlankLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -801,12 +1407,17 @@
         <rule-key>ClosingCurlyBracketMustBeFollowedByBlankLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -814,12 +1425,17 @@
         <rule-key>CurlyBracketsForMultiLineStatementsMustNotShareLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -827,12 +1443,17 @@
         <rule-key>VoidReturnValueMustNotBeDocumented</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -840,12 +1461,17 @@
         <rule-key>StatementMustNotUseUnnecessaryParenthesis</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -853,12 +1479,17 @@
         <rule-key>StatementMustNotBeOnSingleLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -866,12 +1497,17 @@
         <rule-key>StaticElementsMustAppearBeforeInstanceElements</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -879,12 +1515,17 @@
         <rule-key>RemoveDelegateParenthesisWhenPossible</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -892,12 +1533,17 @@
         <rule-key>PreprocessorKeywordsMustNotBePrecededBySpace</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -905,12 +1551,17 @@
         <rule-key>NullableTypeSymbolsMustNotBePrecededBySpace</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -918,25 +1569,17 @@
         <rule-key>BlockStatementsMustNotContainEmbeddedComments</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
-        </prop>
-      </chc>
-      <chc>
-        <rule-repo>stylecop</rule-repo>
-        <rule-key>BlockStatementsMustNotContainEmbeddedRegions</rule-key>
-        <prop>
-          <key>remediationFactor</key>
-          <val>0.03</val>
-          <txt>d</txt>
+          <txt>constant_issue</txt>
         </prop>
         <prop>
-          <key>remediationFunction</key>
-          <txt>linear</txt>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
     </chc>
@@ -945,14 +1588,180 @@
       <name>Understandability</name>
       <chc>
         <rule-repo>stylecop</rule-repo>
-        <rule-key>DocumentationTextMustNotBeEmpty</rule-key>
+        <rule-key>PropertyDocumentationMustHaveValue</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>PropertyDocumentationMustHaveValueText</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>FileHeaderMustHaveSummary</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>FileHeaderFileNameDocumentationMustMatchTypeName</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>IncludedDocumentationFileDoesNotExist</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>InheritDocMustBeUsedWithInheritingClass</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>DoNotPlaceRegionsWithinElements</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>DoNotUseRegions</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>30.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>BlockStatementsMustNotContainEmbeddedRegions</rule-key>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>DocumentationTextMustNotBeEmpty</rule-key>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+        </prop>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -960,11 +1769,16 @@
         <rule-key>DestructorSummaryDocumentationMustBeginWithStandardText</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -972,11 +1786,16 @@
         <rule-key>DoNotPrefixCallsWithBaseUnlessLocalImplementationExists</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -984,11 +1803,16 @@
         <rule-key>DocumentationMustContainValidXml</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -996,11 +1820,16 @@
         <rule-key>DocumentationMustMeetCharacterPercentage</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1008,11 +1837,16 @@
         <rule-key>DocumentationTextMustContainWhitespace</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1020,11 +1854,16 @@
         <rule-key>DocumentationTextMustMeetMinimumCharacterLength</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1032,11 +1871,16 @@
         <rule-key>ElementDocumentationMustHaveSummary</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1044,11 +1888,16 @@
         <rule-key>ElementDocumentationMustHaveSummaryText</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1056,11 +1905,16 @@
         <rule-key>ElementDocumentationMustNotBeCopiedAndPasted</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1068,11 +1922,16 @@
         <rule-key>ElementDocumentationMustNotHaveDefaultSummary</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1080,11 +1939,16 @@
         <rule-key>FileMayOnlyContainASingleNamespace</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>1.0</val>
+          <txt>h</txt>
         </prop>
       </chc>
       <chc>
@@ -1092,11 +1956,16 @@
         <rule-key>FileMustHaveHeader</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1104,12 +1973,17 @@
         <rule-key>CommentsMustContainText</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1117,12 +1991,17 @@
         <rule-key>InterfaceNamesMustBeginWithI</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1130,12 +2009,17 @@
         <rule-key>ElementReturnValueMustBeDocumented</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1143,12 +2027,17 @@
         <rule-key>ElementsMustBeDocumented</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>20.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1156,12 +2045,17 @@
         <rule-key>PrefixLocalCallsWithThis</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1169,12 +2063,17 @@
         <rule-key>ConstantsMustAppearBeforeFields</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1182,12 +2081,17 @@
         <rule-key>ElementsMustAppearInTheCorrectOrder</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1195,12 +2099,17 @@
         <rule-key>ElementsMustBeOrderedByAccess</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1208,12 +2117,17 @@
         <rule-key>FileHeaderFileNameDocumentationMustMatchFileName</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1221,12 +2135,17 @@
         <rule-key>FieldNamesMustBeginWithLowerCaseLetter</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1234,12 +2153,17 @@
         <rule-key>ElementParameterDocumentationMustDeclareParameterName</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1247,12 +2171,17 @@
         <rule-key>GenericTypeParameterDocumentationMustDeclareParameterName</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1260,12 +2189,17 @@
         <rule-key>UsingDirectivesMustBePlacedWithinNamespace</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1273,12 +2207,17 @@
         <rule-key>NonPrivateReadonlyFieldsMustBeginWithUpperCaseLetter</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1286,12 +2225,17 @@
         <rule-key>CodeAnalysisSuppressionMustHaveJustification</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1299,12 +2243,17 @@
         <rule-key>CodeMustNotContainEmptyStatements</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1312,12 +2261,17 @@
         <rule-key>DebugAssertMustProvideMessageText</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1325,12 +2279,17 @@
         <rule-key>DebugFailMustProvideMessageText</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1338,12 +2297,17 @@
         <rule-key>ElementParameterDocumentationMustHaveText</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1351,12 +2315,17 @@
         <rule-key>GenericTypeParameterDocumentationMustMatchTypeParameters</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1364,12 +2333,17 @@
         <rule-key>PartialElementsMustBeDocumented</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1377,12 +2351,17 @@
         <rule-key>ElementParametersMustBeDocumented</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1390,12 +2369,17 @@
         <rule-key>EnumerationItemsMustBeDocumented</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1403,12 +2387,17 @@
         <rule-key>GenericTypeParametersMustBeDocumented</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1416,12 +2405,17 @@
         <rule-key>GenericTypeParametersMustBeDocumentedPartialClass</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1429,12 +2423,17 @@
         <rule-key>ElementReturnValueDocumentationMustHaveText</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1442,12 +2441,17 @@
         <rule-key>GenericTypeParameterDocumentationMustHaveText</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1455,12 +2459,17 @@
         <rule-key>ElementParameterDocumentationMustMatchElementParameters</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1473,7 +2482,12 @@
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1481,12 +2495,17 @@
         <rule-key>PartialElementDocumentationMustHaveSummary</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1499,7 +2518,12 @@
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1507,12 +2531,17 @@
         <rule-key>PropertySummaryDocumentationMustMatchAccessors</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1520,12 +2549,17 @@
         <rule-key>VariableNamesMustNotBePrefixed</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1533,12 +2567,17 @@
         <rule-key>UsingAliasDirectivesMustBePlacedAfterOtherUsingDirectives</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1546,12 +2585,17 @@
         <rule-key>SystemUsingDirectivesMustBePlacedBeforeOtherUsingDirectives</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1559,12 +2603,17 @@
         <rule-key>SplitParametersMustStartOnLineAfterDeclaration</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1572,12 +2621,17 @@
         <rule-key>QueryClauseMustFollowPreviousClause</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1585,12 +2639,17 @@
         <rule-key>QueryClausesMustBeOnSeparateLinesOrAllOnOneLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1598,12 +2657,17 @@
         <rule-key>QueryClausesSpanningMultipleLinesMustBeginOnOwnLine</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1611,12 +2675,17 @@
         <rule-key>QueryClauseMustBeginOnNewLineWhenPreviousClauseSpansMultipleLines</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1624,12 +2693,17 @@
         <rule-key>PropertyAccessorsMustFollowOrder</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1637,12 +2711,17 @@
         <rule-key>CodeMustNotContainSpaceAfterNewKeywordInImplicitlyTypedArrayAllocation</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1650,12 +2729,17 @@
         <rule-key>ConditionalExpressionsMustDeclarePrecedence</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1663,12 +2747,17 @@
         <rule-key>DeclarationKeywordsMustFollowOrder</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1676,12 +2765,17 @@
         <rule-key>CurlyBracketsMustNotBeOmitted</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1689,12 +2783,17 @@
         <rule-key>ConstructorSummaryDocumentationMustBeginWithStandardText</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1702,12 +2801,17 @@
         <rule-key>EventAccessorsMustFollowOrder</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1715,12 +2819,17 @@
         <rule-key>PropertySummaryDocumentationMustOmitSetAccessorWithRestrictedAccess</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>5.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1728,12 +2837,17 @@
         <rule-key>UseBuiltInTypeAlias</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1741,12 +2855,17 @@
         <rule-key>AccessModifierMustBeDeclared</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1754,12 +2873,17 @@
         <rule-key>ArithmeticExpressionsMustDeclarePrecedence</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
     </chc>
@@ -1775,12 +2899,17 @@
         <rule-key>FileHeaderMustContainFileName</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1788,12 +2917,35 @@
         <rule-key>FileHeaderMustHaveCopyrightText</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>FileHeaderCopyrightTextMustMatch</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1801,12 +2953,35 @@
         <rule-key>FileHeaderMustHaveValidCompanyText</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
+        </prop>
+      </chc>
+      <chc>
+        <rule-repo>stylecop</rule-repo>
+        <rule-key>FileHeaderCompanyNameTextMustMatch</rule-key>
+        <prop>
+          <key>remediationFunction</key>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>remediationFactor</key>
+          <val>0.0</val>
+          <txt>mn</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
       <chc>
@@ -1814,12 +2989,17 @@
         <rule-key>FileHeaderMustShowCopyright</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>constant_resource</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>15.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
     </chc>
@@ -1835,11 +3015,16 @@
         <rule-key>UseStringEmptyForEmptyStrings</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.01</val>
+          <val>0.0</val>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
     </chc>
@@ -1855,12 +3040,17 @@
         <rule-key>FieldsMustBePrivate</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.03</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>10.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
     </chc>
@@ -1872,12 +3062,17 @@
         <rule-key>IncludeNodeDoesNotContainValidFileAndPath</rule-key>
         <prop>
           <key>remediationFactor</key>
-          <val>0.125</val>
+          <val>0.0</val>
           <txt>d</txt>
         </prop>
         <prop>
           <key>remediationFunction</key>
-          <txt>linear</txt>
+          <txt>constant_issue</txt>
+        </prop>
+        <prop>
+          <key>offset</key>
+          <val>30.0</val>
+          <txt>mn</txt>
         </prop>
       </chc>
     </chc>
