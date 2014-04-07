@@ -20,6 +20,7 @@
 package org.sonar.plugins.stylecop;
 
 import com.google.common.collect.ImmutableList;
+import org.sonar.api.PropertyType;
 import org.sonar.api.SonarPlugin;
 import org.sonar.api.config.PropertyDefinition;
 import org.sonar.api.resources.Qualifiers;
@@ -76,6 +77,7 @@ public class StyleCopPlugin extends SonarPlugin {
         .name("Timeout in minutes")
         .description("Example: 60 for a one hour timeout")
         .defaultValue("60")
+        .type(PropertyType.INTEGER)
         .category(CATEGORY)
         .subCategory(SUBCATEGORY)
         .onQualifiers(Qualifiers.PROJECT, Qualifiers.MODULE)
