@@ -38,16 +38,8 @@ public class StyleCopConfigurationTest {
     Settings settings = mock(Settings.class);
     StyleCopConfiguration conf = new StyleCopConfiguration(settings);
 
-    mockSetProperty(settings, "sonar.stylecop.msBuildPath", "c:/MSBuild.exe");
+    when(settings.getString("sonar.stylecop.msBuildPath")).thenReturn("c:/MSBuild.exe");
     assertThat(conf.msBuildPath()).isEqualTo("c:/MSBuild.exe");
-  }
-
-  @Test
-  public void msBuildPath_missing() {
-    thrown.expect(IllegalArgumentException.class);
-    thrown.expectMessage("Missing the mandatory property \"sonar.stylecop.msBuildPath\".");
-
-    new StyleCopConfiguration(mock(Settings.class)).msBuildPath();
   }
 
   @Test
@@ -55,18 +47,18 @@ public class StyleCopConfigurationTest {
     Settings settings = mock(Settings.class);
     StyleCopConfiguration conf = new StyleCopConfiguration(settings);
 
-    mockSetProperty(settings, "sonar.dotnet.version", "4.0");
-    mockSetProperty(settings, "sonar.dotnet.4.0.sdk.directory", "c:/.NET_4.0");
+    when(settings.getString("sonar.dotnet.version")).thenReturn("4.0");
+    when(settings.getString("sonar.dotnet.4.0.sdk.directory")).thenReturn("c:/.NET_4.0");
     assertThat(conf.msBuildPath()).isEqualTo("c:/.NET_4.0/MSBuild.exe");
 
-    mockSetProperty(settings, "sonar.dotnet.version", "3.5");
-    mockSetProperty(settings, "sonar.dotnet.3.5.sdk.directory", "c:/.NET_3.5");
+    when(settings.getString("sonar.dotnet.version")).thenReturn("3.5");
+    when(settings.getString("sonar.dotnet.3.5.sdk.directory")).thenReturn("c:/.NET_3.5");
     assertThat(conf.msBuildPath()).isEqualTo("c:/.NET_3.5/MSBuild.exe");
 
-    mockSetProperty(settings, "sonar.dotnet.3.5.sdk.directory", "c:/.NET_3.5/");
+    when(settings.getString("sonar.dotnet.3.5.sdk.directory")).thenReturn("c:/.NET_3.5/");
     assertThat(conf.msBuildPath()).isEqualTo("c:/.NET_3.5/MSBuild.exe");
 
-    mockSetProperty(settings, "sonar.dotnet.3.5.sdk.directory", "c:\\.NET_3.5\\");
+    when(settings.getString("sonar.dotnet.3.5.sdk.directory")).thenReturn("c:\\.NET_3.5\\");
     assertThat(conf.msBuildPath()).isEqualTo("c:\\.NET_3.5\\MSBuild.exe");
   }
 
@@ -75,16 +67,8 @@ public class StyleCopConfigurationTest {
     Settings settings = mock(Settings.class);
     StyleCopConfiguration conf = new StyleCopConfiguration(settings);
 
-    mockSetProperty(settings, "sonar.stylecop.styleCopDllPath", "c:/StyleCop.dll");
+    when(settings.getString("sonar.stylecop.styleCopDllPath")).thenReturn("c:/StyleCop.dll");
     assertThat(conf.styleCopDllPath()).isEqualTo("c:/StyleCop.dll");
-  }
-
-  @Test
-  public void styleCopDllPath_missing() {
-    thrown.expect(IllegalArgumentException.class);
-    thrown.expectMessage("Missing the mandatory property \"sonar.stylecop.styleCopDllPath\".");
-
-    new StyleCopConfiguration(mock(Settings.class)).styleCopDllPath();
   }
 
   @Test
@@ -92,13 +76,13 @@ public class StyleCopConfigurationTest {
     Settings settings = mock(Settings.class);
     StyleCopConfiguration conf = new StyleCopConfiguration(settings);
 
-    mockSetProperty(settings, "sonar.stylecop.installDirectory", "c:/StyleCop");
+    when(settings.getString("sonar.stylecop.installDirectory")).thenReturn("c:/StyleCop");
     assertThat(conf.styleCopDllPath()).isEqualTo("c:/StyleCop/StyleCop.dll");
 
-    mockSetProperty(settings, "sonar.stylecop.installDirectory", "c:/StyleCop/");
+    when(settings.getString("sonar.stylecop.installDirectory")).thenReturn("c:/StyleCop/");
     assertThat(conf.styleCopDllPath()).isEqualTo("c:/StyleCop/StyleCop.dll");
 
-    mockSetProperty(settings, "sonar.stylecop.installDirectory", "c:\\StyleCop\\");
+    when(settings.getString("sonar.stylecop.installDirectory")).thenReturn("c:\\StyleCop\\");
     assertThat(conf.styleCopDllPath()).isEqualTo("c:\\StyleCop\\StyleCop.dll");
   }
 
@@ -107,7 +91,7 @@ public class StyleCopConfigurationTest {
     Settings settings = mock(Settings.class);
     StyleCopConfiguration conf = new StyleCopConfiguration(settings);
 
-    mockSetProperty(settings, "sonar.stylecop.projectFilePath", "c:/Solution/Project/project.csproj");
+    when(settings.getString("sonar.stylecop.projectFilePath")).thenReturn("c:/Solution/Project/project.csproj");
     assertThat(conf.projectFilePath()).isEqualTo("c:/Solution/Project/project.csproj");
   }
 
@@ -124,26 +108,8 @@ public class StyleCopConfigurationTest {
     Settings settings = mock(Settings.class);
     StyleCopConfiguration conf = new StyleCopConfiguration(settings);
 
-    mockSetProperty(settings, "sonar.stylecop.timeoutMinutes", 42);
+    when(settings.getInt("sonar.stylecop.timeoutMinutes")).thenReturn(42);
     assertThat(conf.timeoutMinutes()).isEqualTo(42);
-  }
-
-  @Test
-  public void timeoutMinutes_missing() {
-    thrown.expect(IllegalArgumentException.class);
-    thrown.expectMessage("Missing the mandatory property \"sonar.stylecop.timeoutMinutes\".");
-
-    new StyleCopConfiguration(mock(Settings.class)).timeoutMinutes();
-  }
-
-  private static void mockSetProperty(Settings settings, String key, String value) {
-    when(settings.hasKey(key)).thenReturn(true);
-    when(settings.getString(key)).thenReturn(value);
-  }
-
-  private static void mockSetProperty(Settings settings, String key, int value) {
-    when(settings.hasKey(key)).thenReturn(true);
-    when(settings.getInt(key)).thenReturn(value);
   }
 
 }

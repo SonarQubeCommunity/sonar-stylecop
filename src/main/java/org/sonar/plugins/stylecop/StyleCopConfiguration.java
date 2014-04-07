@@ -37,18 +37,21 @@ public class StyleCopConfiguration {
   public String msBuildPath() {
     String result;
 
-    if (settings.hasKey(StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY)) {
+    String netVersion = settings.getString(StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY);
+    if (netVersion != null) {
       String netFrameworkPropertyKey = StyleCopPlugin.STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 +
-        settings.getString(StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY) +
+        netVersion +
         StyleCopPlugin.STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2;
 
       LOG.warn("Use the new property \"" + StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY + "\" instead of the deprecated \""
         + StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY + "\" and \""
         + netFrameworkPropertyKey + "\".");
 
-      result = mergePathAndFile(mandatoryStringProperty(netFrameworkPropertyKey), "MSBuild.exe");
+      requiredProperty(netFrameworkPropertyKey);
+
+      result = mergePathAndFile(settings.getString(netFrameworkPropertyKey), "MSBuild.exe");
     } else {
-      result = mandatoryStringProperty(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY);
+      result = settings.getString(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY);
     }
 
     return result;
@@ -57,38 +60,31 @@ public class StyleCopConfiguration {
   public String styleCopDllPath() {
     String result;
 
-    if (settings.hasKey(StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY)) {
+    String styleCopInstallDirectory = settings.getString(StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY);
+    if (styleCopInstallDirectory != null) {
       LOG.warn("Use the new property \"" + StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY + "\" instead of the deprecated \""
         + StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY + "\".");
 
       result = mergePathAndFile(settings.getString(StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY), "StyleCop.dll");
     } else {
-      result = mandatoryStringProperty(StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY);
+      result = settings.getString(StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY);
     }
 
     return result;
   }
 
   public String projectFilePath() {
-    return mandatoryStringProperty("sonar.stylecop.projectFilePath");
+    return requiredProperty(StyleCopPlugin.STYLECOP_PROJECT_FILE_PATH_PROPERTY_KEY);
   }
 
   public int timeoutMinutes() {
-    return mandatoryIntProperty(StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY);
+    return settings.getInt(StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY);
   }
 
-  private String mandatoryStringProperty(String propertyKey) {
-    checkMandatoryProperty(propertyKey);
-    return settings.getString(propertyKey);
-  }
-
-  private int mandatoryIntProperty(String propertyKey) {
-    checkMandatoryProperty(propertyKey);
-    return settings.getInt(propertyKey);
-  }
-
-  private void checkMandatoryProperty(String propertyKey) {
-    Preconditions.checkArgument(settings.hasKey(propertyKey), "Missing the mandatory property \"" + propertyKey + "\".");
+  private String requiredProperty(String propertyKey) {
+    String value = settings.getString(propertyKey);
+    Preconditions.checkArgument(value != null, "Missing the mandatory property \"" + propertyKey + "\".");
+    return value;
   }
 
   private static String mergePathAndFile(String s1, String s2) {
