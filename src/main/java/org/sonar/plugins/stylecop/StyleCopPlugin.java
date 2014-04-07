@@ -40,6 +40,7 @@ public class StyleCopPlugin extends SonarPlugin {
   public static final String STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY = "sonar.dotnet.version";
   public static final String STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 = "sonar.dotnet.";
   public static final String STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2 = ".sdk.directory";
+  public static final String STYLECOP_IGNORED_HUNGARIAN_PREFIXES_PROPERTY_KEY = "sonar.stylecop.ignoredHungarianPrefixes";
 
   private static final String CATEGORY = "C#";
   private static final String SUBCATEGORY = "StyleCop";
@@ -78,6 +79,14 @@ public class StyleCopPlugin extends SonarPlugin {
         .description("Example: 60 for a one hour timeout")
         .defaultValue("60")
         .type(PropertyType.INTEGER)
+        .category(CATEGORY)
+        .subCategory(SUBCATEGORY)
+        .onQualifiers(Qualifiers.PROJECT, Qualifiers.MODULE)
+        .build(),
+      PropertyDefinition.builder(STYLECOP_IGNORED_HUNGARIAN_PREFIXES_PROPERTY_KEY)
+        .name("Ignored Hungarian prefixes")
+        .description("Comma-seperated list of prefixes to ignore for the Hungarian naming rules.<br />Example: as,is,do")
+        .defaultValue("as,do,id,if,in,is,my,no,on,to,ui")
         .category(CATEGORY)
         .subCategory(SUBCATEGORY)
         .onQualifiers(Qualifiers.PROJECT, Qualifiers.MODULE)

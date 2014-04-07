@@ -27,6 +27,7 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import java.io.File;
+import java.util.Collections;
 
 import static org.fest.assertions.Assertions.assertThat;
 
@@ -39,7 +40,7 @@ public class StyleCopSettingsWriterTest {
   public void test() throws Exception {
     File file1 = tmp.newFile();
 
-    new StyleCopSettingsWriter().write(ImmutableList.of("foo#A", "foo#B", "bar#C"), file1);
+    new StyleCopSettingsWriter().write(ImmutableList.of("foo#A", "foo#B", "bar#C"), Collections.<String>emptyList(), file1);
     String contents1 = Files.toString(file1, Charsets.UTF_8);
 
     assertThat(contents1.replace("\r", "").replace("\n", ""))
@@ -73,7 +74,7 @@ public class StyleCopSettingsWriterTest {
           + "</StyleCopSettings>");
 
     File file2 = tmp.newFile();
-    new StyleCopSettingsWriter().write(ImmutableList.of("baz#SomeRuleKey"), file2);
+    new StyleCopSettingsWriter().write(ImmutableList.of("baz#SomeRuleKey"), Collections.<String>emptyList(), file2);
     String contents2 = Files.toString(file2, Charsets.UTF_8);
 
     assertThat(contents2)

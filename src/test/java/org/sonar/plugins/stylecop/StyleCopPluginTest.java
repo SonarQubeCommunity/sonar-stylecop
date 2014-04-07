@@ -41,7 +41,8 @@ public class StyleCopPluginTest {
       "sonar.stylecop.msBuildPath",
       "sonar.stylecop.styleCopDllPath",
       "sonar.stylecop.projectFilePath",
-      "sonar.stylecop.timeoutMinutes");
+      "sonar.stylecop.timeoutMinutes",
+      "sonar.stylecop.ignoredHungarianPrefixes");
   }
 
   private List nonProperties(List extensions) {

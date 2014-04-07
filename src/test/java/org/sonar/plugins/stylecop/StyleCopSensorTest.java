@@ -39,6 +39,7 @@ import org.sonar.api.scan.filesystem.FileQuery;
 import org.sonar.api.scan.filesystem.ModuleFileSystem;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.List;
 
 import static org.fest.assertions.Assertions.assertThat;
@@ -131,6 +132,7 @@ public class StyleCopSensorTest {
 
     verify(settingsWriter).write(
       ImmutableList.of("MyNamespace#AccessModifierMustBeDeclared", "MyNamespace#AccessibleFieldsMustBeginWithUpperCaseLetter"),
+      Collections.<String>emptyList(),
       new File(workingDir, "StyleCop-settings.StyleCop"));
     verify(executor).execute(
       "MSBuild.exe", new File(workingDir, "StyleCop-msbuild.proj").getAbsolutePath(), 60,
@@ -179,6 +181,7 @@ public class StyleCopSensorTest {
     when(styleCopConf.styleCopDllPath()).thenReturn(styleCopDllPath);
     when(styleCopConf.projectFilePath()).thenReturn(projectFilePath);
     when(styleCopConf.timeoutMinutes()).thenReturn(timeoutMinutes);
+    when(styleCopConf.ignoredHungarianPrefixes()).thenReturn(Collections.<String>emptyList());
     return styleCopConf;
   }
 

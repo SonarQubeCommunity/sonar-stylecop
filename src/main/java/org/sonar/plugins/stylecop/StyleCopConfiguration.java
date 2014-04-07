@@ -20,6 +20,7 @@
 package org.sonar.plugins.stylecop;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Splitter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.config.Settings;
@@ -79,6 +80,10 @@ public class StyleCopConfiguration {
 
   public int timeoutMinutes() {
     return settings.getInt(StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY);
+  }
+
+  public Iterable<String> ignoredHungarianPrefixes() {
+    return Splitter.on(',').omitEmptyStrings().trimResults().split(settings.getString(StyleCopPlugin.STYLECOP_IGNORED_HUNGARIAN_PREFIXES_PROPERTY_KEY));
   }
 
   private String requiredProperty(String propertyKey) {

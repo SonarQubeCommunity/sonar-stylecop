@@ -90,7 +90,7 @@ public class StyleCopSensor implements Sensor {
     StyleCopExecutor executor) {
 
     File settingsFile = new File(fileSystem.workingDir(), "StyleCop-settings.StyleCop");
-    settingsWriter.write(enabledRuleConfigKeys(), settingsFile);
+    settingsWriter.write(enabledRuleConfigKeys(), styleCopConf.ignoredHungarianPrefixes(), settingsFile);
 
     File msBuildFile = new File(fileSystem.workingDir(), "StyleCop-msbuild.proj");
     File reportFile = new File(fileSystem.workingDir(), "StyleCop-report.xml");

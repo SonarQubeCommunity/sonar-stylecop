@@ -33,7 +33,7 @@ import java.util.Set;
 
 public class StyleCopSettingsWriter {
 
-  public void write(List<String> ruleConfigKeys, File file) {
+  public void write(List<String> ruleConfigKeys, Iterable<String> ignoredHungarianPrefixes, File file) {
     StringBuilder sb = new StringBuilder();
 
     appendLine(sb, "<StyleCopSettings Version=\"105\">");
@@ -50,6 +50,15 @@ public class StyleCopSettingsWriter {
         appendLine(sb, "        </Rule>");
       }
       appendLine(sb, "      </Rules>");
+      if ("StyleCop.CSharp.NamingRules".equals(ruleNamespace)) {
+        appendLine(sb, "      <AnalyzerSettings>");
+        appendLine(sb, "        <CollectionProperty Name=\"Hungarian\">");
+        for (String ignoredHungarianPrefix : ignoredHungarianPrefixes) {
+          appendLine(sb, "          <Value>" + ignoredHungarianPrefix + "</Value>");
+        }
+        appendLine(sb, "        </CollectionProperty>");
+        appendLine(sb, "      </AnalyzerSettings>");
+      }
       appendLine(sb, "    </Analyzer>");
     }
 
