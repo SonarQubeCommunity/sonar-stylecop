@@ -76,12 +76,12 @@ public class StyleCopSensorTest {
 
   @Test
   public void analyze() throws Exception {
-    Settings settings = mockSettings("MSBuild.exe", "StyleCop.exe", "MyProject.csproj", 60);
+    StyleCopConfiguration styleCopConf = mockStyleCopConf("MSBuild.exe", "StyleCop.exe", "MyProject.csproj", 60);
     RulesProfile profile = mock(RulesProfile.class);
     ModuleFileSystem fileSystem = mock(ModuleFileSystem.class);
     ResourcePerspectives perspectives = mock(ResourcePerspectives.class);
 
-    StyleCopSensor sensor = new StyleCopSensor(settings, profile, fileSystem, perspectives);
+    StyleCopSensor sensor = new StyleCopSensor(mock(Settings.class), profile, fileSystem, perspectives);
 
     List<ActiveRule> activeRules = mockActiveRules("AccessModifierMustBeDeclared", "AccessibleFieldsMustBeginWithUpperCaseLetter");
     when(profile.getActiveRulesByRepository("stylecop")).thenReturn(activeRules);
@@ -127,7 +127,7 @@ public class StyleCopSensorTest {
         new StyleCopIssue(400, 4, "Class4.cs", "MyNamespace", "AccessModifierMustBeDeclared", "Fourth message"),
         new StyleCopIssue(500, 5, "Class5.cs", "MyNamespace", "AccessModifierMustBeDeclared", "Fifth message")));
 
-    sensor.analyse(context, fileProvider, settingsWriter, msBuildWriter, parser, executor);
+    sensor.analyse(context, fileProvider, styleCopConf, settingsWriter, msBuildWriter, parser, executor);
 
     verify(settingsWriter).write(
       ImmutableList.of("MyNamespace#AccessModifierMustBeDeclared", "MyNamespace#AccessibleFieldsMustBeginWithUpperCaseLetter"),
@@ -173,13 +173,13 @@ public class StyleCopSensorTest {
     return builder.build();
   }
 
-  private static Settings mockSettings(String msBuildPath, String styleCopDllPath, String projectFilePath, int timeoutMinutes) {
-    Settings settings = new Settings();
-    settings.setProperty(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY, msBuildPath);
-    settings.setProperty(StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY, styleCopDllPath);
-    settings.setProperty(StyleCopPlugin.STYLECOP_PROJECT_FILE_PATH_PROPERTY_KEY, projectFilePath);
-    settings.setProperty(StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY, timeoutMinutes);
-    return settings;
+  private static StyleCopConfiguration mockStyleCopConf(String msBuildPath, String styleCopDllPath, String projectFilePath, int timeoutMinutes) {
+    StyleCopConfiguration styleCopConf = mock(StyleCopConfiguration.class);
+    when(styleCopConf.msBuildPath()).thenReturn(msBuildPath);
+    when(styleCopConf.styleCopDllPath()).thenReturn(styleCopDllPath);
+    when(styleCopConf.projectFilePath()).thenReturn(projectFilePath);
+    when(styleCopConf.timeoutMinutes()).thenReturn(timeoutMinutes);
+    return styleCopConf;
   }
 
 }

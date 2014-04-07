@@ -78,11 +78,15 @@ public class StyleCopSensor implements Sensor {
 
   @Override
   public void analyse(Project project, SensorContext context) {
-    analyse(context, new FileProvider(project, context), new StyleCopSettingsWriter(), new StyleCopMsBuildWriter(), new StyleCopReportParser(), new StyleCopExecutor());
+    analyse(context, new FileProvider(project, context),
+      new StyleCopConfiguration(settings),
+      new StyleCopSettingsWriter(), new StyleCopMsBuildWriter(), new StyleCopReportParser(), new StyleCopExecutor());
   }
 
   @VisibleForTesting
-  void analyse(SensorContext context, FileProvider fileProvider, StyleCopSettingsWriter settingsWriter, StyleCopMsBuildWriter msBuildWriter, StyleCopReportParser parser,
+  void analyse(SensorContext context, FileProvider fileProvider,
+    StyleCopConfiguration styleCopConf,
+    StyleCopSettingsWriter settingsWriter, StyleCopMsBuildWriter msBuildWriter, StyleCopReportParser parser,
     StyleCopExecutor executor) {
 
     File settingsFile = new File(fileSystem.workingDir(), "StyleCop-settings.StyleCop");
@@ -91,14 +95,14 @@ public class StyleCopSensor implements Sensor {
     File msBuildFile = new File(fileSystem.workingDir(), "StyleCop-msbuild.proj");
     File reportFile = new File(fileSystem.workingDir(), "StyleCop-report.xml");
     msBuildWriter.write(
-      new File(styleCopDllPath()),
-      new File(settings.getString("sonar.stylecop.projectFilePath")),
+      new File(styleCopConf.styleCopDllPath()),
+      new File(styleCopConf.projectFilePath()),
       settingsFile, reportFile, msBuildFile);
 
     executor.execute(
-      msBuildPath(),
+      styleCopConf.msBuildPath(),
       msBuildFile.getAbsolutePath(),
-      settings.getInt(StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY),
+      styleCopConf.timeoutMinutes(),
       "StyleCop's execution timed out. Increase the timeout by setting \"" + StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY + "\" property.");
 
     Set<String> enabledRuleKeys = enabledRuleKeys();
@@ -147,32 +151,6 @@ public class StyleCopSensor implements Sensor {
       builder.add(activeRule.getRuleKey());
     }
     return builder.build();
-  }
-
-  private String msBuildPath() {
-    if (settings.hasKey(StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY)) {
-      String netFrameworkPropertyKey = StyleCopPlugin.STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 +
-        settings.getString(StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY) +
-        StyleCopPlugin.STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2;
-
-      if (settings.hasKey(netFrameworkPropertyKey)) {
-        LOG.warn("Use the new property \"" + StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY + "\" instead of the deprecated \""
-          + StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY + "\" and \""
-          + netFrameworkPropertyKey + "\".");
-        return settings.getString(netFrameworkPropertyKey) + "MSBuild.exe";
-      }
-    }
-
-    return settings.getString(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY);
-  }
-
-  private String styleCopDllPath() {
-    if (settings.hasKey(StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY)) {
-      LOG.warn("Use the new property \"" + StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY + "\" instead of the deprecated \""
-        + StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY + "\".");
-      return settings.getString(StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY) + "StyleCop.dll";
-    }
-    return settings.getString(StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY);
   }
 
 }
