@@ -103,6 +103,7 @@ public class StyleCopSensorTest {
     when(fileProvider.fromIOFile(new File("Class3.cs"))).thenReturn(fooSonarFileWithIssuable);
     when(fileProvider.fromIOFile(new File("Class4.cs"))).thenReturn(fooSonarFileWithoutIssuable);
     when(fileProvider.fromIOFile(new File("Class5.cs"))).thenReturn(barSonarFile);
+    when(fileProvider.fromIOFile(new File("Class6.cs"))).thenReturn(fooSonarFileWithIssuable);
 
     Issue issue1 = mock(Issue.class);
     IssueBuilder issueBuilder1 = mockIssueBuilder();
@@ -126,7 +127,8 @@ public class StyleCopSensorTest {
         new StyleCopIssue(200, 2, "Class2.cs", "MyNamespace", "AccessModifierMustBeDeclared", "Second message"),
         new StyleCopIssue(300, 3, "Class3.cs", "MyNamespace", "AccessibleFieldsMustBeginWithUpperCaseLetter", "Third message"),
         new StyleCopIssue(400, 4, "Class4.cs", "MyNamespace", "AccessModifierMustBeDeclared", "Fourth message"),
-        new StyleCopIssue(500, 5, "Class5.cs", "MyNamespace", "AccessModifierMustBeDeclared", "Fifth message")));
+        new StyleCopIssue(500, 5, "Class5.cs", "MyNamespace", "AccessModifierMustBeDeclared", "Fifth message"),
+        new StyleCopIssue(600, 6, "Class6.cs", "MyNamespace", "NonExistingRule", "Sixth message")));
 
     sensor.analyse(context, fileProvider, styleCopConf, settingsWriter, msBuildWriter, parser, executor);
 

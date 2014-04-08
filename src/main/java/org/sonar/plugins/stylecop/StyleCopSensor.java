@@ -105,17 +105,22 @@ public class StyleCopSensor implements Sensor {
       styleCopConf.timeoutMinutes(),
       "StyleCop's execution timed out. Increase the timeout by setting \"" + StyleCopPlugin.STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY + "\" property.");
 
+    boolean skippedIssues = false;
+
     Set<String> enabledRuleKeys = enabledRuleKeys();
     for (StyleCopIssue issue : parser.parse(reportFile)) {
       File file = new File(issue.source());
       org.sonar.api.resources.File sonarFile = fileProvider.fromIOFile(file);
       if (sonarFile == null) {
+        skippedIssues = true;
         logSkippedIssueOutsideOfSonarQube(issue, file);
       } else {
         Issuable issuable = perspectives.as(Issuable.class, sonarFile);
         if (issuable == null) {
+          skippedIssues = true;
           logSkippedIssueOutsideOfSonarQube(issue, file);
         } else if (!enabledRuleKeys.contains(issue.rule())) {
+          skippedIssues = true;
           logSkippedIssue(issue, "because the rule \"" + issue.rule() + "\" is either missing or inactive in the quality profile.");
         } else {
           issuable.addIssue(
@@ -127,6 +132,10 @@ public class StyleCopSensor implements Sensor {
         }
       }
     }
+
+    if (skippedIssues) {
+      LOG.info("The import of some StyleCop issues were skipped. See DEBUG logs for details.");
+    }
   }
 
   private static void logSkippedIssueOutsideOfSonarQube(StyleCopIssue issue, File file) {
@@ -134,7 +143,7 @@ public class StyleCopSensor implements Sensor {
   }
 
   private static void logSkippedIssue(StyleCopIssue issue, String reason) {
-    LOG.info("Skipping the StyleCop issue at line " + issue.reportLine() + " " + reason);
+    LOG.debug("Skipping the StyleCop issue at line " + issue.reportLine() + " " + reason);
   }
 
   private List<String> enabledRuleConfigKeys() {
