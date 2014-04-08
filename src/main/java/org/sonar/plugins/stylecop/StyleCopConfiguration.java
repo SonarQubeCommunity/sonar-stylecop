@@ -43,14 +43,9 @@ public class StyleCopConfiguration {
       String netFrameworkPropertyKey = StyleCopPlugin.STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 +
         netVersion +
         StyleCopPlugin.STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2;
+      logDeprecatedPropertyUsage(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY, StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY + "\" and \"" + netFrameworkPropertyKey);
 
-      LOG.warn("Use the new property \"" + StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY + "\" instead of the deprecated \""
-        + StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY + "\" and \""
-        + netFrameworkPropertyKey + "\".");
-
-      requiredProperty(netFrameworkPropertyKey);
-
-      result = mergePathAndFile(settings.getString(netFrameworkPropertyKey), "MSBuild.exe");
+      result = mergePathAndFile(requiredProperty(netFrameworkPropertyKey), "MSBuild.exe");
     } else {
       result = settings.getString(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY);
     }
@@ -63,9 +58,7 @@ public class StyleCopConfiguration {
 
     String styleCopInstallDirectory = settings.getString(StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY);
     if (styleCopInstallDirectory != null) {
-      LOG.warn("Use the new property \"" + StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY + "\" instead of the deprecated \""
-        + StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY + "\".");
-
+      logDeprecatedPropertyUsage(StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY, StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY);
       result = mergePathAndFile(settings.getString(StyleCopPlugin.STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY), "StyleCop.dll");
     } else {
       result = settings.getString(StyleCopPlugin.STYLECOP_DLL_PATH_PROPERTY_KEY);
@@ -94,6 +87,10 @@ public class StyleCopConfiguration {
 
   private static String mergePathAndFile(String s1, String s2) {
     return s1.endsWith("/") || s1.endsWith("\\") ? s1 + s2 : s1 + "/" + s2;
+  }
+
+  private static void logDeprecatedPropertyUsage(String newPropertyKey, String oldProperty) {
+    LOG.warn("Use the new property \"" + newPropertyKey + "\" instead of the deprecated \"" + oldProperty + "\".");
   }
 
 }
