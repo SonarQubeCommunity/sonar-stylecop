@@ -43,7 +43,10 @@ public class StyleCopConfiguration {
       String netFrameworkPropertyKey = StyleCopPlugin.STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 +
         netVersion +
         StyleCopPlugin.STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2;
-      logDeprecatedPropertyUsage(StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY, StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY + "\" and \"" + netFrameworkPropertyKey);
+
+      logDeprecatedPropertyUsage(
+        StyleCopPlugin.STYLECOP_MSBUILD_PATH_PROPERTY_KEY,
+        StyleCopPlugin.STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY + "\" and \"" + netFrameworkPropertyKey);
 
       result = mergePathAndFile(requiredProperty(netFrameworkPropertyKey), "MSBuild.exe");
     } else {
