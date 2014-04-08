@@ -85,7 +85,7 @@ public class StyleCopPlugin extends SonarPlugin {
         .build(),
       PropertyDefinition.builder(STYLECOP_IGNORED_HUNGARIAN_PREFIXES_PROPERTY_KEY)
         .name("Ignored Hungarian prefixes")
-        .description("Comma-seperated list of prefixes to ignore for the Hungarian naming rules.<br />Example: as,is,do")
+        .description("Comma-separated list of prefixes to ignore for the Hungarian naming rules.<br />Example: as,is,do")
         .defaultValue("as,do,id,if,in,is,my,no,on,to,ui")
         .category(CATEGORY)
         .subCategory(SUBCATEGORY)
