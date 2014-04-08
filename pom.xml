@@ -15,7 +15,7 @@
   <packaging>sonar-plugin</packaging>
 
   <name>SonarQube StyleCop Plugin</name>
-  <description>Plugin StyleCop.</description> <!-- FIXME -->
+  <description>Enables the use of StyleCop rules on C# code.</description>
   <url />
   <inceptionYear>2014</inceptionYear>
   <organization>
@@ -45,7 +45,7 @@
   </scm>
   <issueManagement>
     <system>JIRA</system>
-    <url>http://jira.codehaus.org/browse/SONARPLUGINS/component/16450</url>
+    <url>http://jira.codehaus.org/browse/SONARPLUGINS/component/16487</url>
   </issueManagement>
 
   <properties>
