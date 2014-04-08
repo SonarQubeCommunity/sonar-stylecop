@@ -40,7 +40,7 @@ public class StyleCopSettingsWriterTest {
   public void test() throws Exception {
     File file1 = tmp.newFile();
 
-    new StyleCopSettingsWriter().write(ImmutableList.of("foo#A", "foo#B", "bar#C"), Collections.<String>emptyList(), file1);
+    new StyleCopSettingsWriter().write(ImmutableList.of("foo#A", "StyleCop.CSharp.NamingRules#C", "foo#B"), ImmutableList.of("aa", "bb"), file1);
     String contents1 = Files.toString(file1, Charsets.UTF_8);
 
     assertThat(contents1.replace("\r", "").replace("\n", ""))
@@ -61,7 +61,7 @@ public class StyleCopSettingsWriterTest {
           + "        </Rule>"
           + "      </Rules>"
           + "    </Analyzer>"
-          + "    <Analyzer AnalyzerId=\"bar\">"
+          + "    <Analyzer AnalyzerId=\"StyleCop.CSharp.NamingRules\">"
           + "      <Rules>"
           + "        <Rule Name=\"C\">"
           + "          <RuleSettings>"
@@ -69,6 +69,12 @@ public class StyleCopSettingsWriterTest {
           + "          </RuleSettings>"
           + "        </Rule>"
           + "      </Rules>"
+          + "      <AnalyzerSettings>"
+          + "        <CollectionProperty Name=\"Hungarian\">"
+          + "          <Value>aa</Value>"
+          + "          <Value>bb</Value>"
+          + "        </CollectionProperty>"
+          + "      </AnalyzerSettings>"
           + "    </Analyzer>"
           + "  </Analyzers>"
           + "</StyleCopSettings>");
@@ -80,7 +86,8 @@ public class StyleCopSettingsWriterTest {
     assertThat(contents2)
       .contains("baz")
       .contains("SomeRuleKey")
-      .doesNotContain("foo");
+      .doesNotContain("foo")
+      .doesNotContain("CollectionProperty");
   }
 
 }
