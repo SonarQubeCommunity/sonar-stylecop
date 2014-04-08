@@ -1126,12 +1126,12 @@
           <key>remediationFunction</key>
           <txt>constant_issue</txt>
         </prop>
-      </chc>
         <prop>
           <key>offset</key>
           <val>5.0</val>
           <txt>mn</txt>
         </prop>
+      </chc>
       <chc>
         <rule-repo>stylecop</rule-repo>
         <rule-key>ClosingParenthesisMustBeSpacedCorrectly</rule-key>
