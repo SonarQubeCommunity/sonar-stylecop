@@ -60,7 +60,7 @@ public class StyleCopMsBuildWriter {
     appendLine(sb, "      CacheResults=\"false\"");
     appendLine(sb, "      OverrideSettingsFile=\"$(StyleCopOverrideSettingsFile)\"");
     appendLine(sb, "      OutputFile=\"$(StyleCopOutputFile)\"");
-    appendLine(sb, "      MaxViolationCount=\"0\" />");
+    appendLine(sb, "      MaxViolationCount=\"-1\" />");
     appendLine(sb, "  </Target>");
     appendLine(sb, "</Project>");
 

@@ -72,7 +72,7 @@ public class StyleCopMsBuildWriterTest {
           + "      CacheResults=\"false\""
           + "      OverrideSettingsFile=\"$(StyleCopOverrideSettingsFile)\""
           + "      OutputFile=\"$(StyleCopOutputFile)\""
-          + "      MaxViolationCount=\"0\" />"
+          + "      MaxViolationCount=\"-1\" />"
           + "  </Target>"
           + "</Project>");
   }
