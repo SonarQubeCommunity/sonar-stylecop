@@ -45,7 +45,6 @@ public class StyleCopPlugin extends SonarPlugin {
 
   private static final String CATEGORY = "C#";
   private static final String SUBCATEGORY = "StyleCop";
-  private static final String DEPRECATED_SUBCATEGORY = "Deprecated";
 
   @Override
   public List getExtensions() {
@@ -111,7 +110,7 @@ public class StyleCopPlugin extends SonarPlugin {
         + "You should stop using it as soon as possible.<br />"
         + "Consult the migration guide for guidance.")
       .category(CATEGORY)
-      .subCategory(DEPRECATED_SUBCATEGORY)
+      .subCategory("Deprecated")
       .onQualifiers(Qualifiers.PROJECT, Qualifiers.MODULE)
       .build();
   }
