@@ -104,9 +104,12 @@ public class StyleCopPlugin extends SonarPlugin {
   }
 
   private static PropertyDefinition deprecatedPropertyDefinition(String oldKey) {
-    return PropertyDefinition.builder(oldKey)
+    return PropertyDefinition
+      .builder(oldKey)
       .name(oldKey)
-      .description("Refer to the migration guide.")
+      .description("This property is deprecated and will be removed in a future version.<br />"
+        + "You should stop using it as soon as possible.<br />"
+        + "Consult the migration guide for guidance.")
       .category(CATEGORY)
       .subCategory(DEPRECATED_SUBCATEGORY)
       .onQualifiers(Qualifiers.PROJECT, Qualifiers.MODULE)
