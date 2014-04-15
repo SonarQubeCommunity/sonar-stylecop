@@ -36,14 +36,16 @@ public class StyleCopPlugin extends SonarPlugin {
   public static final String STYLECOP_DLL_PATH_PROPERTY_KEY = "sonar.stylecop.styleCopDllPath";
   public static final String STYLECOP_PROJECT_FILE_PATH_PROPERTY_KEY = "sonar.stylecop.projectFilePath";
   public static final String STYLECOP_TIMEOUT_MINUTES_PROPERTY_KEY = "sonar.stylecop.timeoutMinutes";
+  public static final String STYLECOP_IGNORED_HUNGARIAN_PREFIXES_PROPERTY_KEY = "sonar.stylecop.ignoredHungarianPrefixes";
+
   public static final String STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY = "sonar.stylecop.installDirectory";
   public static final String STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY = "sonar.dotnet.version";
   public static final String STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 = "sonar.dotnet.";
   public static final String STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2 = ".sdk.directory";
-  public static final String STYLECOP_IGNORED_HUNGARIAN_PREFIXES_PROPERTY_KEY = "sonar.stylecop.ignoredHungarianPrefixes";
 
   private static final String CATEGORY = "C#";
   private static final String SUBCATEGORY = "StyleCop";
+  private static final String DEPRECATED_SUBCATEGORY = "Deprecated";
 
   @Override
   public List getExtensions() {
@@ -90,7 +92,25 @@ public class StyleCopPlugin extends SonarPlugin {
         .category(CATEGORY)
         .subCategory(SUBCATEGORY)
         .onQualifiers(Qualifiers.PROJECT, Qualifiers.MODULE)
-        .build());
+        .build(),
+
+      deprecatedPropertyDefinition(STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY),
+
+      deprecatedPropertyDefinition(STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY),
+      deprecatedPropertyDefinition(STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 + "2.0" + STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2),
+      deprecatedPropertyDefinition(STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 + "3.5" + STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2),
+      deprecatedPropertyDefinition(STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 + "4.0" + STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2),
+      deprecatedPropertyDefinition(STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 + "4.5" + STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2));
+  }
+
+  private static PropertyDefinition deprecatedPropertyDefinition(String oldKey) {
+    return PropertyDefinition.builder(oldKey)
+      .name(oldKey)
+      .description("Refer to the migration guide.")
+      .category(CATEGORY)
+      .subCategory(DEPRECATED_SUBCATEGORY)
+      .onQualifiers(Qualifiers.PROJECT, Qualifiers.MODULE)
+      .build();
   }
 
 }

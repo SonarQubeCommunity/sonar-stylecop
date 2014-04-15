@@ -42,7 +42,14 @@ public class StyleCopPluginTest {
       "sonar.stylecop.styleCopDllPath",
       "sonar.stylecop.projectFilePath",
       "sonar.stylecop.timeoutMinutes",
-      "sonar.stylecop.ignoredHungarianPrefixes");
+      "sonar.stylecop.ignoredHungarianPrefixes",
+
+      "sonar.stylecop.installDirectory",
+      "sonar.dotnet.version",
+      "sonar.dotnet.2.0.sdk.directory",
+      "sonar.dotnet.3.5.sdk.directory",
+      "sonar.dotnet.4.0.sdk.directory",
+      "sonar.dotnet.4.5.sdk.directory");
   }
 
   private List nonProperties(List extensions) {
