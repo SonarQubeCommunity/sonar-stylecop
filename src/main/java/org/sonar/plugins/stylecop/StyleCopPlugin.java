@@ -25,6 +25,8 @@ import org.sonar.api.SonarPlugin;
 import org.sonar.api.config.PropertyDefinition;
 import org.sonar.api.resources.Qualifiers;
 
+import javax.annotation.Nullable;
+
 import java.util.List;
 
 public class StyleCopPlugin extends SonarPlugin {
@@ -96,14 +98,27 @@ public class StyleCopPlugin extends SonarPlugin {
       deprecatedPropertyDefinition(STYLECOP_OLD_INSTALL_DIRECTORY_PROPERTY_KEY),
 
       deprecatedPropertyDefinition(STYLECOP_OLD_DOTNET_VERSION_PROPERTY_KEY),
-      deprecatedPropertyDefinition(STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 + "2.0" + STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2),
-      deprecatedPropertyDefinition(STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 + "3.5" + STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2),
-      deprecatedPropertyDefinition(STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 + "4.0" + STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2),
-      deprecatedPropertyDefinition(STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 + "4.5" + STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2));
+
+      deprecatedPropertyDefinition(
+        STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 + "2.0" + STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2,
+        "C:/WINDOWS/Microsoft.NET/Framework/v2.0.50727"),
+      deprecatedPropertyDefinition(
+        STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 + "3.5" + STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2,
+        "C:/WINDOWS/Microsoft.NET/Framework/v3.5"),
+      deprecatedPropertyDefinition(
+        STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 + "4.0" + STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2,
+        "C:/WINDOWS/Microsoft.NET/Framework/v4.0.30319"),
+      deprecatedPropertyDefinition(
+        STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_1 + "4.5" + STYLECOP_OLD_DOTNET_FRAMEWORK_PROPERTY_KEY_PART_2,
+        "C:/WINDOWS/Microsoft.NET/Framework/v4.0.30319"));
   }
 
   private static PropertyDefinition deprecatedPropertyDefinition(String oldKey) {
-    return PropertyDefinition
+    return deprecatedPropertyDefinition(oldKey, null);
+  }
+
+  private static PropertyDefinition deprecatedPropertyDefinition(String oldKey, @Nullable String defaultValue) {
+    PropertyDefinition.Builder builder = PropertyDefinition
       .builder(oldKey)
       .name(oldKey)
       .description("This property is deprecated and will be removed in a future version.<br />"
@@ -111,8 +126,13 @@ public class StyleCopPlugin extends SonarPlugin {
         + "Consult the migration guide for guidance.")
       .category(CATEGORY)
       .subCategory("Deprecated")
-      .onQualifiers(Qualifiers.PROJECT, Qualifiers.MODULE)
-      .build();
+      .onQualifiers(Qualifiers.PROJECT, Qualifiers.MODULE);
+
+    if (defaultValue != null) {
+      builder.defaultValue(defaultValue);
+    }
+
+    return builder.build();
   }
 
 }
