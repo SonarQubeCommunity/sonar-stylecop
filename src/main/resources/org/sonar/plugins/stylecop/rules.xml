@@ -20,8 +20,8 @@ Follow these steps to make your custom StyleCop rules available in SonarQube:
 </ol>
       ]]>
     </description>
-    <param key="RuleName" />
     <param key="AnalyzerId" />
+    <param key="RuleName" />
   </rule>
   <rule key="ElementMustBeginWithUpperCaseLetter">
     <name>Element must begin with upper case letter</name>
