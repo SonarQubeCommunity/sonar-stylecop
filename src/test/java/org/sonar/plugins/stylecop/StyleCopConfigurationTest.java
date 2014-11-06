@@ -138,4 +138,13 @@ public class StyleCopConfigurationTest {
     new StyleCopConfiguration(settings).styleCopDllPath();
   }
 
+  @Test
+  public void ignored_hungarian_prefixes() {
+    Settings settings = mock(Settings.class);
+    when(settings.getString("sonar.stylecop.ignoredHungarianPrefixes")).thenReturn("");
+    assertThat(new StyleCopConfiguration(settings).ignoredHungarianPrefixes()).isEmpty();
+    when(settings.getString("sonar.stylecop.ignoredHungarianPrefixes")).thenReturn("  ,foo,bar  ,,");
+    assertThat(new StyleCopConfiguration(settings).ignoredHungarianPrefixes()).containsOnly("foo", "bar");
+  }
+
 }
