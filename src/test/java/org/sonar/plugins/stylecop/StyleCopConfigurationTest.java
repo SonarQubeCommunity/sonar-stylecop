@@ -24,11 +24,16 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.sonar.api.config.Settings;
 
+import java.io.File;
+
 import static org.fest.assertions.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class StyleCopConfigurationTest {
+
+  private static final String MSBUILD_EXE = new File("src/test/resources/StyleCopConfiguration/MSBuild.exe").getAbsolutePath();
+  private static final String STYLECOP_DLL = new File("src/test/resources/StyleCopConfiguration/StyleCop.dll").getAbsolutePath();
 
   @Rule
   public ExpectedException thrown = ExpectedException.none();
@@ -38,8 +43,8 @@ public class StyleCopConfigurationTest {
     Settings settings = mock(Settings.class);
     StyleCopConfiguration conf = new StyleCopConfiguration(settings);
 
-    when(settings.getString("sonar.stylecop.msBuildPath")).thenReturn("c:/MSBuild.exe");
-    assertThat(conf.msBuildPath()).isEqualTo("c:/MSBuild.exe");
+    when(settings.getString("sonar.stylecop.msBuildPath")).thenReturn(MSBUILD_EXE);
+    assertThat(conf.msBuildPath()).isEqualTo(MSBUILD_EXE);
   }
 
   @Test
@@ -48,18 +53,12 @@ public class StyleCopConfigurationTest {
     StyleCopConfiguration conf = new StyleCopConfiguration(settings);
 
     when(settings.getString("sonar.dotnet.version")).thenReturn("4.0");
-    when(settings.getString("sonar.dotnet.4.0.sdk.directory")).thenReturn("c:/.NET_4.0");
-    assertThat(conf.msBuildPath()).isEqualTo("c:/.NET_4.0/MSBuild.exe");
+    when(settings.getString("sonar.dotnet.4.0.sdk.directory")).thenReturn(new File("src/test/resources/StyleCopConfiguration/4.0").getAbsolutePath());
+    assertThat(conf.msBuildPath()).isEqualTo(new File("src/test/resources/StyleCopConfiguration/4.0/MSBuild.exe").getAbsolutePath());
 
     when(settings.getString("sonar.dotnet.version")).thenReturn("3.5");
-    when(settings.getString("sonar.dotnet.3.5.sdk.directory")).thenReturn("c:/.NET_3.5");
-    assertThat(conf.msBuildPath()).isEqualTo("c:/.NET_3.5/MSBuild.exe");
-
-    when(settings.getString("sonar.dotnet.3.5.sdk.directory")).thenReturn("c:/.NET_3.5/");
-    assertThat(conf.msBuildPath()).isEqualTo("c:/.NET_3.5/MSBuild.exe");
-
-    when(settings.getString("sonar.dotnet.3.5.sdk.directory")).thenReturn("c:\\.NET_3.5\\");
-    assertThat(conf.msBuildPath()).isEqualTo("c:\\.NET_3.5\\MSBuild.exe");
+    when(settings.getString("sonar.dotnet.3.5.sdk.directory")).thenReturn(new File("src/test/resources/StyleCopConfiguration/3.5").getAbsolutePath());
+    assertThat(conf.msBuildPath()).isEqualTo(new File("src/test/resources/StyleCopConfiguration/3.5/MSBuild.exe").getAbsolutePath());
   }
 
   @Test
@@ -67,8 +66,8 @@ public class StyleCopConfigurationTest {
     Settings settings = mock(Settings.class);
     StyleCopConfiguration conf = new StyleCopConfiguration(settings);
 
-    when(settings.getString("sonar.stylecop.styleCopDllPath")).thenReturn("c:/StyleCop.dll");
-    assertThat(conf.styleCopDllPath()).isEqualTo("c:/StyleCop.dll");
+    when(settings.getString("sonar.stylecop.styleCopDllPath")).thenReturn(STYLECOP_DLL);
+    assertThat(conf.styleCopDllPath()).isEqualTo(STYLECOP_DLL);
   }
 
   @Test
@@ -76,14 +75,8 @@ public class StyleCopConfigurationTest {
     Settings settings = mock(Settings.class);
     StyleCopConfiguration conf = new StyleCopConfiguration(settings);
 
-    when(settings.getString("sonar.stylecop.installDirectory")).thenReturn("c:/StyleCop");
-    assertThat(conf.styleCopDllPath()).isEqualTo("c:/StyleCop/StyleCop.dll");
-
-    when(settings.getString("sonar.stylecop.installDirectory")).thenReturn("c:/StyleCop/");
-    assertThat(conf.styleCopDllPath()).isEqualTo("c:/StyleCop/StyleCop.dll");
-
-    when(settings.getString("sonar.stylecop.installDirectory")).thenReturn("c:\\StyleCop\\");
-    assertThat(conf.styleCopDllPath()).isEqualTo("c:\\StyleCop\\StyleCop.dll");
+    when(settings.getString("sonar.stylecop.installDirectory")).thenReturn(new File("src/test/resources/StyleCopConfiguration").getAbsolutePath());
+    assertThat(conf.styleCopDllPath()).isEqualTo(STYLECOP_DLL);
   }
 
   @Test
@@ -110,6 +103,30 @@ public class StyleCopConfigurationTest {
 
     when(settings.getInt("sonar.stylecop.timeoutMinutes")).thenReturn(42);
     assertThat(conf.timeoutMinutes()).isEqualTo(42);
+  }
+
+  @Test
+  public void should_fail_with_invalid_msbuild_exe_path() {
+    String invalid = new File("src/test/resources/StyleCopConfiguration/nonexisting.exe").getAbsolutePath();
+
+    thrown.expect(IllegalArgumentException.class);
+    thrown.expectMessage("Cannot find the file \"" + invalid + "\" provided by the property \"sonar.stylecop.msBuildPath\".");
+
+    Settings settings = mock(Settings.class);
+    when(settings.getString("sonar.stylecop.msBuildPath")).thenReturn(invalid);
+    new StyleCopConfiguration(settings).msBuildPath();
+  }
+
+  @Test
+  public void should_fail_with_invalid_stylecop_dll_path() {
+    String invalid = new File("src/test/resources/StyleCopConfiguration/nonexisting.dll").getAbsolutePath();
+
+    thrown.expect(IllegalArgumentException.class);
+    thrown.expectMessage("Cannot find the file \"" + invalid + "\" provided by the property \"sonar.stylecop.styleCopDllPath\".");
+
+    Settings settings = mock(Settings.class);
+    when(settings.getString("sonar.stylecop.styleCopDllPath")).thenReturn(invalid);
+    new StyleCopConfiguration(settings).styleCopDllPath();
   }
 
 }
