@@ -50,6 +50,7 @@
   <properties>
     <sonar.pluginName>StyleCop</sonar.pluginName>
     <sonar.pluginClass>org.sonar.plugins.stylecop.StyleCopPlugin</sonar.pluginClass>
+    <sonar.requirePlugins>csharp:3.0</sonar.requirePlugins>
     <sonarqube.version>3.7</sonarqube.version>
 
     <maven.test.redirectTestOutputToFile>true</maven.test.redirectTestOutputToFile>
