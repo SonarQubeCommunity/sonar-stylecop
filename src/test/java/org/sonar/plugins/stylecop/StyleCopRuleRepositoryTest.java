@@ -22,6 +22,7 @@ package org.sonar.plugins.stylecop;
 import org.junit.Test;
 import org.sonar.api.rules.Rule;
 import org.sonar.api.rules.XMLRuleParser;
+import org.sonar.check.Cardinality;
 
 import java.util.List;
 
@@ -36,12 +37,24 @@ public class StyleCopRuleRepositoryTest {
     assertThat(repo.getKey()).isEqualTo("stylecop");
 
     List<Rule> rules = repo.createRules();
-    assertThat(rules.size()).isEqualTo(169);
+    assertThat(rules.size()).isEqualTo(170);
     for (Rule rule : rules) {
       assertThat(rule.getKey()).isNotNull();
       assertThat(rule.getName()).isNotNull();
       assertThat(rule.getDescription()).isNotNull();
     }
+
+    assertThat(containsCustomRule(rules)).isTrue();
+  }
+
+  private static boolean containsCustomRule(List<Rule> rules) {
+    for (Rule rule : rules) {
+      if ("CustomRuleTemplate".equals(rule.getKey()) && rule.getCardinality() == Cardinality.MULTIPLE) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
 }
