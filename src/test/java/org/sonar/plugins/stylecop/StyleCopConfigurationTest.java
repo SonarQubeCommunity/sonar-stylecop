@@ -89,9 +89,10 @@ public class StyleCopConfigurationTest {
   }
 
   @Test
-  public void projectFilePath_missing() {
+  public void should_fail_with_missing_project_file_path() {
     thrown.expect(IllegalArgumentException.class);
-    thrown.expectMessage("Missing the mandatory property \"sonar.stylecop.projectFilePath\".");
+    thrown.expectMessage("The property \"sonar.stylecop.projectFilePath\" must be set to execute StyleCop rules.");
+    thrown.expectMessage("This property can be automatically set by the Analysis Bootstrapper for Visual Studio Projects plugin, see: http://docs.codehaus.org/x/TAA1Dg.");
 
     new StyleCopConfiguration(mock(Settings.class)).projectFilePath();
   }
@@ -103,6 +104,14 @@ public class StyleCopConfigurationTest {
 
     when(settings.getInt("sonar.stylecop.timeoutMinutes")).thenReturn(42);
     assertThat(conf.timeoutMinutes()).isEqualTo(42);
+  }
+
+  @Test
+  public void should_fail_with_missing_msbuild_exe_path() {
+    thrown.expect(IllegalArgumentException.class);
+    thrown.expectMessage("Missing the mandatory property \"sonar.stylecop.msBuildPath\".");
+
+    new StyleCopConfiguration(mock(Settings.class)).msBuildPath();
   }
 
   @Test

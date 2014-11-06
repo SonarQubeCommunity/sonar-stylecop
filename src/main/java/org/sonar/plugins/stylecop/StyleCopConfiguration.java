@@ -85,7 +85,13 @@ public class StyleCopConfiguration {
   }
 
   public String projectFilePath() {
-    return requiredProperty(StyleCopPlugin.STYLECOP_PROJECT_FILE_PATH_PROPERTY_KEY);
+    String result = settings.getString(StyleCopPlugin.STYLECOP_PROJECT_FILE_PATH_PROPERTY_KEY);
+    if (result == null) {
+      throw new IllegalArgumentException("The property \"" + StyleCopPlugin.STYLECOP_PROJECT_FILE_PATH_PROPERTY_KEY + "\" must be set to execute StyleCop rules. "
+        + "This property can be automatically set by the Analysis Bootstrapper for Visual Studio Projects plugin, see: http://docs.codehaus.org/x/TAA1Dg.");
+    }
+
+    return result;
   }
 
   public int timeoutMinutes() {
