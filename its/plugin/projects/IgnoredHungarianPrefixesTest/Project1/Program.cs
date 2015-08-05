@@ -1,0 +1,20 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Project1
+{
+    class Program
+    {
+    	public int aaEmployee;
+    	public int bbEmployee;
+    	public int ccEmployee;
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("");
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<profile>
+  <name>profile</name>
+  <language>cs</language>
+  <rules>
+    <rule>
+      <repositoryKey>stylecop</repositoryKey>
+      <key>UseStringEmptyForEmptyStrings</key>
+      <priority>MAJOR</priority>
+    </rule>
+  </rules>
+</profile>

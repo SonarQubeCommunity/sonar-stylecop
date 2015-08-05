@@ -1,0 +1,11 @@
+<profile>
+  <name>hungarian_rule</name>
+  <language>cs</language>
+  <rules>
+    <rule>
+      <repositoryKey>stylecop</repositoryKey>
+      <key>FieldNamesMustNotUseHungarianNotation</key>
+      <priority>MAJOR</priority>
+    </rule>
+  </rules>
+</profile>
